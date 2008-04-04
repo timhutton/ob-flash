@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
+                 paddingLeft="10" paddingRight="10" 
+xmlns:OB="obClasses.*"
+creationComplete="appInit();"  		
+backgroundGradientColors="[0xCCCCCC, 0x444449]"
+frameRate="100"
+viewSourceURL="test.mxml"
+	>
+
+ <mx:Script source="ob_flash.as" />
+
+ <mx:TabNavigator id="mainTabs"  width="100%" height="100%"  paddingTop="10" paddingBottom="10"
+                 paddingLeft="10" paddingRight="10">
+
+  <mx:VBox label="Challenge levels" paddingTop="10" paddingBottom="10"
+                 paddingLeft="10" paddingRight="10" >
+
+  <mx:HDividedBox width="100%" height="100%">
+
+  <!-- The left-hand part of the stage has controls. -->
+
+    <mx:VDividedBox width="30%" height="100%">
+
+      <mx:Panel id="levelPanel" title="Level 1" paddingTop="10" paddingBottom="10"
+               paddingLeft="10" paddingRight="10" height="50%" width="100%" borderAlpha="0.8">
+
+        <mx:VBox>
+
+          <mx:Text text="Break the membrane to release the f1 atom." width="100%" />
+          <mx:HBox>
+            <mx:Button id="testButton" label="Test" click="testLevel();"/>
+            <mx:Button id="nextLevelButton" label="Next level" click="nextLevel();" enabled="false"/>
+          </mx:HBox>
+          <mx:Text id="testMessage" width="100%" />
+
+        </mx:VBox>
+
+      </mx:Panel>
+
+      <mx:Panel id="reactionsPanel" title="Reactions Editor" height="50%" width="100%" borderAlpha="0.8"/>
+ 
+    </mx:VDividedBox>
+
+  <!-- The right-hand part of the stage has the atoms collision area. -->
+
+  <mx:Panel width="70%" height="100%" headerHeight="20" borderAlpha="0.8">
+    <OB:CollisionsCanvas backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" autoLayout="false"
+ width="100%" height="100%" />
+    <mx:ControlBar>
+     <mx:Button label="play" id="playButton" enabled="false" click="playButtonClicked();" />
+     <mx:Button label="pause" id="pauseButton" enabled="true" click="pauseButtonClicked();" />
+     <mx:Spacer width="100%"/>
+     <mx:Button label="slow" click="collisionsArea.running_delay=4;" />
+     <mx:Button label="fast" click="collisionsArea.running_delay=0;" />
+    </mx:ControlBar>
+  </mx:Panel>
+
+  </mx:HDividedBox>
+
+ </mx:VBox>
+
+ <mx:VBox label="Help" />
+ <mx:VBox label="Settings" />
+ <mx:VBox label="About" />
+
+ </mx:TabNavigator>
+
+</mx:Application>
