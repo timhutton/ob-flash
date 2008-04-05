@@ -1,0 +1,3 @@
+#summary wiki home page. start here.
+
+ob-flash is still at a very early stage. There's a moving prototype [http://ob-flash.googlecode.com/svn/trunk/index.html here] but that's about it.
