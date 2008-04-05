@@ -6,7 +6,7 @@ xmlns:OB="obClasses.*"
 creationComplete="appInit();"  		
 backgroundGradientColors="[0xCCCCCC, 0x444449]"
 frameRate="100"
-viewSourceURL="test.mxml"
+viewSourceURL="ob_flash.mxml"
 	>
 
  <mx:Script source="ob_flash.as" />
