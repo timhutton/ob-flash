@@ -57,3 +57,33 @@ public function pauseButtonClicked():void
     playButton.enabled = true;
     pauseButton.enabled = false;
 }
+
+public function slowButtonClicked():void
+{
+    // set the speed to update only evey 4 frame ticks
+    collisionsArea.running_delay=4;
+   // enable/disable the slow/fast buttons
+    slowButton.enabled = false;
+    fastButton.enabled = true;
+}
+
+public function fastButtonClicked():void
+{
+    // set the speed to update every frame tick
+    collisionsArea.running_delay=0;
+   // enable/disable the slow/fast buttons
+    slowButton.enabled = true;
+    fastButton.enabled = false;
+}
+
+public function ZoomIn():void
+{
+	collisionsArea.scaleX *= 2.0;
+	collisionsArea.scaleY *= 2.0;
+}
+
+public function ZoomOut():void
+{
+	collisionsArea.scaleX /= 2.0;
+	collisionsArea.scaleY /= 2.0;
+}
