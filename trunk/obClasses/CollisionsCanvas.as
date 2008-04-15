@@ -18,21 +18,13 @@ public class CollisionsCanvas extends Canvas
 
 	private var frame_delay_remaining:int = running_delay;
 
-	private var areaX:Number = 500;
-	private var areaY:Number = 500;
+	public var areaX:Number = 500;
+	public var areaY:Number = 500;
 
 	public function CollisionsCanvas()
 	{
 		super();
 	}
-
-	/*protected function OnMouseMove(event:MouseEvent):void
-	{
-		// trying to add panning to move around the area - not yet working 
-		if(event.localX > (this.areaX/4)) this.x-=10;
-		else this.x+=10;
-		event.updateAfterEvent();
-	}*/
 
 	override protected function createChildren():void
 	{
@@ -47,7 +39,6 @@ public class CollisionsCanvas extends Canvas
 			this.atoms.push(atom);
 			this.addChild(atom);
 		}
-		//this.addEventListener(MouseEvent.MOUSE_OVER,OnMouseMove);
 	}
 
 	public function doTimeStep(event:Event):void

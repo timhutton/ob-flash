@@ -10,6 +10,16 @@ public function appInit():void
 
     // we start off with the atoms moving
     addEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
+
+    addEventListener(MouseEvent.MOUSE_MOVE, OnMouseMove);
+}
+
+public function OnMouseMove(e:MouseEvent):void
+{
+	if(moveUp.hitTestPoint(e.stageX,e.stageY)) moveUp.visible=true; else moveUp.visible=false;
+	if(moveDown.hitTestPoint(e.stageX,e.stageY)) moveDown.visible=true; else moveDown.visible=false;
+	if(moveLeft.hitTestPoint(e.stageX,e.stageY)) moveLeft.visible=true; else moveLeft.visible=false;
+	if(moveRight.hitTestPoint(e.stageX,e.stageY)) moveRight.visible=true; else moveRight.visible=false;
 }
 
 public function testLevel():void 
@@ -80,10 +90,14 @@ public function ZoomIn():void
 {
 	collisionsArea.scaleX *= 2.0;
 	collisionsArea.scaleY *= 2.0;
+	collisionsArea.x /= 2.0;
+	collisionsArea.y /= 2.0;
 }
 
 public function ZoomOut():void
 {
 	collisionsArea.scaleX /= 2.0;
 	collisionsArea.scaleY /= 2.0;
+	collisionsArea.x *= 2.0;
+	collisionsArea.y *= 2.0;
 }
