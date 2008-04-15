@@ -16,7 +16,7 @@ public class Atom extends Canvas
 	public var type:int;
 	public var state:int;
 
-	public var velocity:Point = new Point(Math.random()*10,Math.random()*10);
+	public var velocity:Point = new Point(Math.random()*20,Math.random()*20);
 
 	public var R:Number = 20; // radius of each atom
 

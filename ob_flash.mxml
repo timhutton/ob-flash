@@ -45,8 +45,13 @@ viewSourceURL="ob_flash.mxml"
 
   <!-- The right-hand part of the stage has the atoms collision area. -->
 
-  <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+  <mx:Canvas width="70%" height="100%" id="collisionsPanel" borderStyle="solid" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
     <OB:CollisionsCanvas backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" width="500" height="500" horizontalScrollPolicy="off" verticalScrollPolicy="off" />
+
+    <mx:Button label="up" id="moveUp" left="50" right="50" top="0" height="50" visible="false" click="collisionsArea.y+=50;"/>
+    <mx:Button label="down" id="moveDown" left="50" right="50" bottom="0" height="50" visible="false" click="collisionsArea.y-=50;" />
+    <mx:Button label="left" id="moveLeft" left="0" bottom="50" top="50" width="50" visible="false" click="collisionsArea.x+=50;" />
+    <mx:Button label="right" id="moveRight" right="0" top="50" bottom="50" width="50" visible="false" click="collisionsArea.x-=50;" />
 
      <mx:VBox>
      <mx:Button label="zoom in" id="zoomInButton" click="ZoomIn();" />
