@@ -1,29 +1,24 @@
 package obClasses
 {
 
-import flash.utils.Timer;
-import flash.events.*;
 import mx.containers.Canvas;
-import mx.controls.*;
-import mx.core.*;
-import mx.events.*;
+import flash.events.Event;
 
 public class CollisionsCanvas extends Canvas
 {
 	public var running_delay:int = 4;
-	public var is_running:Boolean = true;
-
-	private static var N_ATOMS:Number = 50;
-	private var atoms:Array = new Array();
-
 	private var frame_delay_remaining:int = running_delay;
 
-	public var areaX:Number = 500;
-	public var areaY:Number = 500;
+	private var atoms:Array = new Array();
+
+	public const areaX:Number = 1000;
+	public const areaY:Number = 1000;
 
 	public function CollisionsCanvas()
 	{
 		super();
+		width = areaX;
+		height = areaY;
 	}
 
 	override protected function createChildren():void
@@ -31,6 +26,7 @@ public class CollisionsCanvas extends Canvas
 		super.createChildren();
 		// create some atoms in random positions
 		var i:int;
+		const N_ATOMS:int = 100;
 		for(i=0;i<N_ATOMS;i++)
 		{
 			var atom:Atom = new Atom();
@@ -53,7 +49,7 @@ public class CollisionsCanvas extends Canvas
 			atom.x += atom.velocity.x;
 			atom.y += atom.velocity.y;
 			// if the atom has moved outside the area, move it back in and reverse one component of the velocity
-			// (atoms are circles with their x,y in the top-left corner)
+			// (atoms are circles with their x,y in the top-left corner (make clipping simpler))
 			if(atom.x<0) 
 			{ 
 				// (safest implementation is to ensure the atom is moving away from the edge after the bounce)

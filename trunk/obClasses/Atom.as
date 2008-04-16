@@ -5,20 +5,22 @@ import mx.containers.Canvas;
 import mx.controls.Label;
 import mx.controls.Text;
 import mx.utils.ColorUtil;
-import flash.filters.DropShadowFilter;
-import flash.geom.*
-import flash.display.*
+//import flash.filters.DropShadowFilter;
+import flash.geom.Point;
+import flash.geom.Matrix;
+import flash.display.GradientType;
+import flash.display.SpreadMethod;
 
 public class Atom extends Canvas
 {
 	// public data
 
-	public var type:int;
+	public const type:int = int(Math.random()*1000) % 6;
 	public var state:int;
 
-	public var velocity:Point = new Point(Math.random()*20,Math.random()*20);
+	public const R:Number = 20; // radius of each atom
 
-	public var R:Number = 20; // radius of each atom
+	public var velocity:Point = new Point(Math.random()*R*2-R,Math.random()*R*2-R);
 
 	// private data 
 
@@ -31,14 +33,13 @@ public class Atom extends Canvas
 	{
 		super();
 
-		this.type = int(Math.random()*1000) % 6;
 		this.state = 0;
-
-		this.draw();
 	}
 
-	private function draw():void
+	override protected function createChildren():void
 	{
+		super.createChildren();
+
 		var base_color:uint = COLORS[this.type];
 
 		// we add a gradient-filled circle to the canvas
@@ -54,7 +55,7 @@ public class Atom extends Canvas
 				[1, 1, 1,1],
 				[0,70,200,255], // the ratios of each gradient segment
 				mat,SpreadMethod.PAD);
-		this.graphics.drawCircle(this.x+R,this.y+R,R);
+		this.graphics.drawCircle(R,R,R);
 		this.graphics.endFill();
 
 		// and a text label to show the atom's type and state
@@ -64,17 +65,17 @@ public class Atom extends Canvas
 		//label.setStyle("textAlign","center"); // (doesn't work?)
 		label.setStyle("color","0xCCCCCC");
 		label.setStyle("fontSize",String(R-4));
-		label.alpha = 0.2; // (doesn't work?)
+		//label.alpha = 0.2; // (doesn't work?)
 		label.x = 5;
 		label.y = 5;
 		this.addChild(label);
 
 		// let's get fancy and add a drop shadow too
-		var dropShadow:DropShadowFilter = new DropShadowFilter();
+		/*var dropShadow:DropShadowFilter = new DropShadowFilter();
 		dropShadow.alpha = 0.4;
 		dropShadow.distance = 8.0;
 		dropShadow.blurX = dropShadow.blurY = 8.0;
-		//this.filters = [dropShadow];
+		this.filters = [dropShadow];*/
 	}		
 }
 
