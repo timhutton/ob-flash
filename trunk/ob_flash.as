@@ -25,7 +25,7 @@ public function startZoom(f:Number):void
 
 public function endZoom():void
 {
-	zoomSpeed = 0.0;
+	zoomSpeed = 1.0;
 	removeEventListener(Event.ENTER_FRAME,OnZoom);
 }
 
@@ -137,13 +137,6 @@ internal function zoom(f:Number):void
 {
 	const new_scale:Number = collisionsArea.scaleX * f;  // (we keep scaleY == scaleX)
 
-	collisionsArea.scaleX = collisionsArea.scaleY = new_scale;
-
-	// we zoom from the centre of the viewport, so need to account for previous scale and translation
-	const p:Point = new Point(collisionsPanel.width/2,collisionsPanel.height/2);
-	collisionsArea.x = p.x - f * ( p.x - collisionsArea.x );
-	collisionsArea.y = p.y - f * ( p.y - collisionsArea.y );
-
 	// don't want to zoom in/out too far
 	zoomInButton.enabled = (new_scale < 16.0);
 	zoomOutButton.enabled = (new_scale > 1.0/16.0);
@@ -151,6 +144,15 @@ internal function zoom(f:Number):void
 	// stop zooming if the button becomes disabled
 	if(zoomSpeed>1.0 && !zoomInButton.enabled) endZoom();
 	if(zoomSpeed<1.0 && !zoomOutButton.enabled) endZoom();
+
+	if(zoomSpeed==1.0) return; // stopped zooming
+
+	collisionsArea.scaleX = collisionsArea.scaleY = new_scale;
+
+	// we zoom from the centre of the viewport, so need to account for previous scale and translation
+	const p:Point = new Point(collisionsPanel.width/2,collisionsPanel.height/2);
+	collisionsArea.x = p.x - f * ( p.x - collisionsArea.x );
+	collisionsArea.y = p.y - f * ( p.y - collisionsArea.y );
 
 	// may need to make those pan buttons (in)visible now
 	updatePanButtons();
