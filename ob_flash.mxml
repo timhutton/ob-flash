@@ -1,26 +1,25 @@
 <?xml version="1.0"?>
 
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
-                 paddingLeft="10" paddingRight="10" 
-xmlns:OB="obClasses.*"
-creationComplete="appInit();"  		
-backgroundGradientColors="[0xCCCCCC, 0x444449]"
-frameRate="100"
-viewSourceURL="ob_flash.mxml"
-	>
+<!-- ob-flash is free software, under the GPL v3 - get the code at http://ob-flash.googlecode.com -->
 
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
+                 paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"  		
+		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="100" viewSourceURL="ob_flash.mxml" >
+
+ <!-- Most of the code is contained in .as files, this .mxml just contains the visual layout. -->
  <mx:Script source="ob_flash.as" />
 
+ <!-- The top-level component is a set of tabs -->
  <mx:TabNavigator id="mainTabs"  width="100%" height="100%"  paddingTop="10" paddingBottom="10"
                  paddingLeft="10" paddingRight="10">
 
+  <!-- The first tab contains the atoms collisions area and the challenges -->
   <mx:VBox label="Challenge levels" paddingTop="10" paddingBottom="10"
                  paddingLeft="10" paddingRight="10" >
 
   <mx:HDividedBox width="100%" height="100%">
 
-  <!-- The left-hand part of the stage has controls. -->
-
+    <!-- The left-hand part of the panel has controls. -->
     <mx:VDividedBox width="30%" height="100%">
 
       <mx:Panel id="levelPanel" title="Level 1" paddingTop="10" paddingBottom="10"
@@ -43,29 +42,34 @@ viewSourceURL="ob_flash.mxml"
  
     </mx:VDividedBox>
 
-  <!-- The right-hand part of the stage has the atoms collision area. -->
+   <!-- The right-hand part of the panel has the atoms collision area. -->
+   <mx:Canvas width="70%" height="100%" id="collisionsPanel" borderStyle="solid" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"  >
 
-  <mx:Canvas width="70%" height="100%" id="collisionsPanel" borderStyle="solid" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
-    <OB:CollisionsCanvas backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" width="500" height="500" horizontalScrollPolicy="off" verticalScrollPolicy="off" />
+    <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
-    <mx:Button label="up" id="moveUp" left="50" right="50" top="0" height="50" visible="false" click="collisionsArea.y+=50;"/>
-    <mx:Button label="down" id="moveDown" left="50" right="50" bottom="0" height="50" visible="false" click="collisionsArea.y-=50;" />
-    <mx:Button label="left" id="moveLeft" left="0" bottom="50" top="50" width="50" visible="false" click="collisionsArea.x+=50;" />
-    <mx:Button label="right" id="moveRight" right="0" top="50" bottom="50" width="50" visible="false" click="collisionsArea.x-=50;" />
+    <OB:CollisionsCanvas backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" />
 
-     <mx:VBox>
-     <mx:Button label="zoom in" id="zoomInButton" click="ZoomIn();" />
-     <mx:Button label="zoom out" id="zoomOutButton" click="ZoomOut();" />
-     </mx:VBox>
+    <mx:Button id="moveUp" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" top="0" height="20" mouseDown="startPan(0,10);" mouseUp="endPan();" />
+    <mx:Button id="moveDown" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" bottom="0" height="20" mouseDown="startPan(0,-10);" mouseUp="endPan();" />
+    <mx:Button id="moveLeft" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="0" bottom="50" top="50" width="20" mouseDown="startPan(10,0);" mouseUp="endPan();" />
+    <mx:Button id="moveRight" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" right="0" top="50" bottom="50" width="20" mouseDown="startPan(-10,0);" mouseUp="endPan();" />
+
+    <mx:VBox left="25" top="25">
+     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" width="40" height="40" />
+     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" width="40" height="40" />
+    </mx:VBox>
 
     <mx:ControlBar bottom="0" left="10" right="10">
-     <mx:Button label="play" id="playButton" enabled="false" click="playButtonClicked();" />
-     <mx:Button label="pause" id="pauseButton" enabled="true" click="pauseButtonClicked();" />
+     <mx:Button icon="@Embed(source='assets/player_play.png')" disabledIcon="@Embed(source='assets/player_play_grey.png')" id="playButton" width="40" height="40" enabled="false" click="playButtonClicked();" />
+     <mx:Button icon="@Embed(source='assets/player_pause.png')" disabledIcon="@Embed(source='assets/player_pause_grey.png')" id="pauseButton" width="40" height="40" enabled="true" click="pauseButtonClicked();" />
      <mx:Spacer width="100%"/>
      <mx:Button label="slow" id="slowButton" click="slowButtonClicked();" enabled="false" />
      <mx:Button label="fast" id="fastButton" click="fastButtonClicked();" />
     </mx:ControlBar>
-  </mx:Canvas>
+
+   </mx:Canvas>
 
   </mx:HDividedBox>
 
