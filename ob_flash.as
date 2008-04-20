@@ -1,6 +1,7 @@
 // the main functions for the appliction
 
 import flash.display.Stage;
+import obClasses.*;
 
 private var currentLevel:Number = 1;
 
@@ -15,6 +16,11 @@ public function appInit():void
 	addEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
 
 	updatePanButtons();
+}
+
+public function switchExperimentType():void
+{
+	collisionsArea.newExperiment();
 }
 
 public function startZoom(f:Number):void

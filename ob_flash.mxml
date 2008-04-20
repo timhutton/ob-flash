@@ -38,17 +38,19 @@
 
       </mx:Panel>
 
-      <mx:Panel id="reactionsPanel" title="Reactions Editor" height="50%" width="100%" borderAlpha="0.8"/>
+      <mx:Panel id="reactionsPanel" title="Reactions Editor" height="50%" width="100%" borderAlpha="0.8">
+        <!--<mx:Button label="switch" click="switchExperimentType();" /> (not yet working)-->
+      </mx:Panel>
  
     </mx:VDividedBox>
 
-   <!-- The right-hand part of the panel has the atoms collision area. -->
+   <!-- The right-hand part of the panel has the atoms collision area and various controls, within a Canvas. -->
    <mx:Canvas width="70%" height="100%" id="collisionsPanel" borderStyle="solid" 
 	horizontalScrollPolicy="off" verticalScrollPolicy="off"  >
 
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
-    <OB:CollisionsCanvas backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
+    <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
 	horizontalScrollPolicy="off" verticalScrollPolicy="off" />
 
     <mx:Button id="moveUp" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" top="0" height="20" mouseDown="startPan(0,10);" mouseUp="endPan();" />
