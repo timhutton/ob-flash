@@ -1,0 +1,32 @@
+Interface is centred around the concept of an experiment that can be saved and reused and exchanged. Each experiment has three parts:
+1) a set of initial conditions:
+  a) physics parameters
+  b) world state 
+2) a set of reactions
+3) (optional) a set of monitor specifications
+4) (optional) a special monitor that observes 'success' in the experiment.
+
+Usage:
+- watch an experiment progress, add monitors to track replication rates, etc.
+- stop an experiment and change some settings, then restart it.
+- download an experiment from someone else and look at its parameters while it's running.
+- succeed in getting something to work in an experiment, make sure it happens reliably then post the experiment for others to discuss.
+- load saved experiment (XML) in C++ version for maximum speed processing: development has two channels: the flash side for an introduction and UI fun, a C++ for hardcore multi-processor speed.
+- challenges take the form of partially-fixed experiments, where the other parameters are to be altered in order that the monitors show some desired state at a later stage: evaluation becomes a trivial check that some pre-specified binary-result monitor says yes. 
+- participants can do genuine science by proposing experiments: others can reproduce their results, system is well-specified and clear. 
+- participants can set their own challenges: by making an experiment and marking certain parts of it as fixed, then uploading the experiment file.
+- a live update bar shows latest news: challenges solved, challenges added, forum comments posted
+
+First sight:
+- all settings hidden on tabs, just the bouncing balls visible, and an invitation to enter some reactions, with examples, help and a simple challenge.
+- passing challenges leads to more complex ones, or you can explore the settings and do anything.
+
+Worklist:
+- implement two experiment types: circles-continuous & square-lattice.
+- implement monitors: configurable from experiment spec., use event listeners to get data from collisions
+- implement graphs: updating from monitors, user can choose which to view, auto-scaling, etc.
+- implement experiment specification: xml, editable
+- implement reaction editor
+- implement i18n, using .properties files from OB (thanks Bertrand!)
+- implement standalone C++ version.
+- implement catalysts, floods, mutations, as needed for evolution.

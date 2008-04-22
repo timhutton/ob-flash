@@ -14,7 +14,7 @@
                  paddingLeft="10" paddingRight="10">
 
   <!-- The first tab contains the atoms collisions area and the challenges -->
-  <mx:VBox label="Challenge levels" paddingTop="10" paddingBottom="10"
+  <mx:VBox label="Challenges" paddingTop="10" paddingBottom="10"
                  paddingLeft="10" paddingRight="10" >
 
   <mx:HDividedBox width="100%" height="100%">
@@ -77,9 +77,13 @@
 
  </mx:VBox>
 
- <mx:VBox label="Help" />
+ <mx:VBox label="Reactions Editor" />
+ <mx:VBox label="Graphs" />
  <mx:VBox label="Settings" />
- <mx:VBox label="About" />
+ <mx:VBox label="Help" />
+ <mx:VBox label="About">
+   <mx:Text text="blah" />
+ </mx:VBox>
 
  </mx:TabNavigator>
 
