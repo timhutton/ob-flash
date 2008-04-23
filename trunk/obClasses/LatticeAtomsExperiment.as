@@ -1,22 +1,16 @@
 package obClasses
 {
 
-import flash.geom.Point;
-import mx.containers.Canvas;
 import obClasses.Experiment;
-import obClasses.Atom;
+import obClasses.LatticeAtom;
 
 public class LatticeAtomsExperiment extends Experiment
 {
-	/** the atoms that are present in the world */
-	protected var atoms:Array = new Array();
-
-	/** the size of the world */
-	protected var worldSize:Point = new Point(200,100);
-
 	public function LatticeAtomsExperiment()
 	{
 		super();
+		this._sizeX=150;
+		this._sizeY=140;
 	}
 
 	override protected function createChildren():void
@@ -24,12 +18,12 @@ public class LatticeAtomsExperiment extends Experiment
 		super.createChildren();
 		// create some atoms in random positions
 		var i:int;
-		const N_ATOMS:int = 100;
+		const N_ATOMS:int = 200;
 		for(i=0;i<N_ATOMS;i++)
 		{
-			var atom:Atom = new Atom();
-			atom.x = Math.random()*this.sizeX;
-			atom.y = Math.random()*this.sizeY;
+			var atom:LatticeAtom = new LatticeAtom();
+			atom.x = uint(Math.random()*10000) % sizeX;
+			atom.y = uint(Math.random()*10000) % sizeY;
 			this.atoms.push(atom);
 			this.addChild(atom);
 		}
@@ -37,40 +31,21 @@ public class LatticeAtomsExperiment extends Experiment
 
 	override public function timeStep():void
 	{
-		for each (var atom:Atom in this.atoms)
+		var i:int;
+		for(i = 0;i<10;i++)
 		{
-			// move the atom (assume the velocity was constant over the timestep)
-			atom.x += atom.velocity.x;
-			atom.y += atom.velocity.y;
-			// if the atom has moved outside the area, move it back in and reverse one component of the velocity
-			// (atoms are circles with their x,y in the top-left corner (make clipping simpler))
-			if(atom.x<0) 
-			{ 
-				// (safest implementation is to ensure the atom is moving away from the edge after the bounce)
-				atom.velocity.x = Math.abs(atom.velocity.x); 
-				atom.x=0; 
-			}
-			else if(atom.x>=this.sizeX-atom.R*2) 
-			{ 
-				atom.velocity.x = -1*Math.abs(atom.velocity.x); 
-				atom.x=this.sizeX-atom.R*2-1; 
-			}
-			if(atom.y<0) 
-			{ 
-				atom.velocity.y = Math.abs(atom.velocity.y); 
-				atom.y=0; 
-			}
-			else if(atom.y>=this.sizeY-atom.R*2) 
-			{ 
-				atom.velocity.y = -1*Math.abs(atom.velocity.y);
-				atom.y=this.sizeY-atom.R*2-1; 
-			}
+
+		for each (var atom:LatticeAtom in this.atoms)
+		{
+			// move the atom at random
+			atom.x += uint(Math.random()*1000)%3 - 1;
+			atom.y += uint(Math.random()*1000)%3 - 1;
+			// clamp to remain within area
+			atom.x = Math.max(0,Math.min(sizeX-1,atom.x));
+			atom.y = Math.max(0,Math.min(sizeY-1,atom.y));
+		}
 		}
 	}
-
-	override public function get sizeX():uint { return worldSize.x; }
-	override public function get sizeY():uint { return worldSize.y; }
-
 }
 
 }

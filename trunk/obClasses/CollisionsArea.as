@@ -17,7 +17,6 @@ public class CollisionsArea extends Canvas
 
 	public function newExperiment():void
 	{
-		// this doesn't work properly : get bad size afterwards
 		scaleX = scaleY = 1.0;
 		removeChild(currentExperiment);
 		currentExperiment = new LatticeAtomsExperiment();
@@ -47,6 +46,8 @@ public class CollisionsArea extends Canvas
 		else this.frame_delay_remaining=running_delay;
 
 		currentExperiment.timeStep();	
+
+		// itCountLabel.text = String(currentExperiment.iterations); // doesn't compile
 	}
 }
 
