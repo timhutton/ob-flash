@@ -51,7 +51,10 @@
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off" />
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+     <mx:Text text="0" id="itCountLabel" />
+    </OB:CollisionsArea>
+
 
     <mx:Button id="moveUp" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" top="0" height="20" mouseDown="startPan(0,10);" mouseUp="endPan();" />
     <mx:Button id="moveDown" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" bottom="0" height="20" mouseDown="startPan(0,-10);" mouseUp="endPan();" />
@@ -79,7 +82,9 @@
 
  <mx:VBox label="Reactions Editor" />
  <mx:VBox label="Graphs" />
- <mx:VBox label="Settings" />
+ <mx:VBox label="Settings">
+   <mx:Button label="switch to lattice" click="switchExperimentType();" />
+ </mx:VBox>
  <mx:VBox label="Help" />
  <mx:VBox label="About">
    <mx:Text text="blah" />

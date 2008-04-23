@@ -4,19 +4,15 @@ package obClasses
 import flash.geom.Point;
 import mx.containers.Canvas;
 import obClasses.Experiment;
-import obClasses.Atom;
+import obClasses.CircularAtom;
 
 public class CircularAtomsExperiment extends Experiment
 {
-	/** the atoms that are present in the world */
-	protected var atoms:Array = new Array();
-
-	/** the size of the world */
-	protected var worldSize:Point = new Point(1000,1000);
-
 	public function CircularAtomsExperiment()
 	{
 		super();
+		this._sizeX=400;
+		this._sizeY=300;
 	}
 
 	override protected function createChildren():void
@@ -27,9 +23,9 @@ public class CircularAtomsExperiment extends Experiment
 		const N_ATOMS:int = 100;
 		for(i=0;i<N_ATOMS;i++)
 		{
-			var atom:Atom = new Atom();
-			atom.x = Math.random()*this.sizeX;
-			atom.y = Math.random()*this.sizeY;
+			var atom:CircularAtom = new CircularAtom();
+			atom.x = Math.random() * sizeX;
+			atom.y = Math.random() * sizeY;
 			this.atoms.push(atom);
 			this.addChild(atom);
 		}
@@ -37,7 +33,7 @@ public class CircularAtomsExperiment extends Experiment
 
 	override public function timeStep():void
 	{
-		for each (var atom:Atom in this.atoms)
+		for each (var atom:CircularAtom in this.atoms)
 		{
 			// move the atom (assume the velocity was constant over the timestep)
 			atom.x += atom.velocity.x;
@@ -67,10 +63,6 @@ public class CircularAtomsExperiment extends Experiment
 			}
 		}
 	}
-
-	override public function get sizeX():uint { return worldSize.x; }
-	override public function get sizeY():uint { return worldSize.y; }
-
 }
 
 }
