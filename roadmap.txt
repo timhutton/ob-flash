@@ -22,10 +22,14 @@ First sight:
 - passing challenges leads to more complex ones, or you can explore the settings and do anything.
 
 Worklist:
-- implement two experiment types: circles-continuous & square-lattice.
+- implement physics types: circles-continuous, square-lattice (different nhood bond lengths)
+- implement reaction types: simple two-way, three-way, catalysed, copies catalyst? special: fixes/unfixes atoms?
 - implement monitors: configurable from experiment spec., use event listeners to get data from collisions
 - implement graphs: updating from monitors, user can choose which to view, auto-scaling, etc.
-- implement experiment specification: xml, editable
+- implement experiment specification: xml, editable - can load on its own like kwon-tom loop's loopy, enabling people to upload their experiment and post a direct link using URL "?" operator, e.g. 
+http://www.storage.org/ob_flash.html?experiment=http://www.funzone.com/jumba/experiment626.xml
+(javascript passes the parameter value to the swf, achieving the same things as:)
+http://www.storage.org/stuff/ob_flash.swf?experiment=http://www.funzone.com/jumba/experiment626.xml
 - implement reaction editor
 - implement i18n, using .properties files from OB (thanks Bertrand!)
 - implement standalone C++ version.

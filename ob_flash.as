@@ -5,8 +5,9 @@ import obClasses.*;
 
 private var currentLevel:Number = 1;
 
-public var panVelocity:Point = new Point(0,0);
 public var zoomSpeed:Number = 0.0;
+
+public var mouseGrabbed:Point;
 
 public function appInit():void
 {
@@ -15,7 +16,27 @@ public function appInit():void
 	// we start off with the atoms moving
 	addEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
 
-	updatePanButtons();
+	// we allow the collisions area to be dragged
+	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
+}
+
+public function startDragging(event:MouseEvent):void 
+{
+	collisionsArea.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
+	collisionsArea.addEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
+	mouseGrabbed = new Point(event.localX,event.localY);
+}
+
+public function stopDragging(event:MouseEvent):void 
+{
+	collisionsArea.removeEventListener(MouseEvent.MOUSE_UP, stopDragging);
+	collisionsArea.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
+}
+
+public function mouseMoving(event:MouseEvent):void 
+{
+	collisionsArea.x += event.localX - mouseGrabbed.x;
+	collisionsArea.y += event.localY - mouseGrabbed.y;
 }
 
 public function switchExperimentType():void
@@ -38,40 +59,6 @@ public function endZoom():void
 public function OnZoom(event:Event):void
 {
 	zoom(zoomSpeed);
-}
-
-public function startPan(x:Number,y:Number):void
-{
-	panVelocity = new Point(x,y);
-	addEventListener(Event.ENTER_FRAME,pan);
-}
-
-public function endPan():void
-{
-	panVelocity = new Point(0,0);
-	removeEventListener(Event.ENTER_FRAME,pan);
-}
-
-internal function pan(event:Event):void
-{
-	collisionsArea.x += panVelocity.x;
-	collisionsArea.y += panVelocity.y;
-	updatePanButtons();
-}
-
-public function updatePanButtons():void
-{
-	// show the left/right/up/down buttons only when there is more to see in that direction
-	moveLeft.visible = (collisionsArea.x<0);
-	moveRight.visible = (collisionsArea.x+collisionsArea.areaX*collisionsArea.scaleX > collisionsPanel.width);
-	moveUp.visible = (collisionsArea.y<0);
-	moveDown.visible = (collisionsArea.y+collisionsArea.areaY*collisionsArea.scaleX > collisionsPanel.height);
-
-	// stop panning if we move off the edge
-	if(!moveLeft.visible && panVelocity.x>0) endPan();
-	if(!moveRight.visible && panVelocity.x<0) endPan();
-	if(!moveUp.visible && panVelocity.y>0) endPan();
-	if(!moveDown.visible && panVelocity.y<0) endPan();
 }
 
 public function testLevel():void 
@@ -122,8 +109,9 @@ public function pauseButtonClicked():void
 
 public function slowButtonClicked():void
 {
-	// set the speed to update only evey 4 frame ticks
-	collisionsArea.running_delay=4;
+	// set the speed to update only evey 1 frame tick
+	collisionsArea.timesteps_per_frame=1;
+
 	// enable/disable the slow/fast buttons
 	slowButton.enabled = false;
 	fastButton.enabled = true;
@@ -131,8 +119,8 @@ public function slowButtonClicked():void
 
 public function fastButtonClicked():void
 {
-	// set the speed to update every frame tick
-	collisionsArea.running_delay=0;
+	// set the speed to do four timesteps every frame tick
+	collisionsArea.timesteps_per_frame=10;
 
 	// enable/disable the slow/fast buttons
 	slowButton.enabled = true;
@@ -162,6 +150,4 @@ internal function zoom(f:Number):void
 	collisionsArea.x = p.x - f * ( p.x - collisionsArea.x );
 	collisionsArea.y = p.y - f * ( p.y - collisionsArea.y );
 
-	// may need to make those pan buttons (in)visible now
-	updatePanButtons();
 }
