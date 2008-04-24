@@ -18,8 +18,8 @@ public class Experiment extends Canvas
 	/** the vertical size of the world */
 	protected var _sizeY:uint;
 
-	/** perform one timestep computation */
-	public function timeStep():void {}
+	/** perform one timestep computation (to be overridden) */
+	public function timeStep():void { _iterations++; }
 
 	/** return the horizontal size of the world */
 	public function get sizeX():uint { return _sizeX; }

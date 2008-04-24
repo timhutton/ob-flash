@@ -33,6 +33,7 @@ public class CircularAtomsExperiment extends Experiment
 
 	override public function timeStep():void
 	{
+		super.timeStep();
 		for each (var atom:CircularAtom in this.atoms)
 		{
 			// move the atom (assume the velocity was constant over the timestep)

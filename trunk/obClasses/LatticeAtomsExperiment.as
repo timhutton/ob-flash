@@ -30,10 +30,8 @@ public class LatticeAtomsExperiment extends Experiment
 	}
 
 	override public function timeStep():void
-	{
-		var i:int;
-		for(i = 0;i<10;i++)
-		{
+	{		
+		super.timeStep();
 
 		for each (var atom:LatticeAtom in this.atoms)
 		{
@@ -43,7 +41,6 @@ public class LatticeAtomsExperiment extends Experiment
 			// clamp to remain within area
 			atom.x = Math.max(0,Math.min(sizeX-1,atom.x));
 			atom.y = Math.max(0,Math.min(sizeY-1,atom.y));
-		}
 		}
 	}
 }

@@ -4,7 +4,7 @@
 
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
                  paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"  		
-		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="100" viewSourceURL="ob_flash.mxml" >
+		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="10" >
 
  <!-- Most of the code is contained in .as files, this .mxml just contains the visual layout. -->
  <mx:Script source="ob_flash.as" />
@@ -51,15 +51,7 @@
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off" >
-     <mx:Text text="0" id="itCountLabel" />
-    </OB:CollisionsArea>
-
-
-    <mx:Button id="moveUp" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" top="0" height="20" mouseDown="startPan(0,10);" mouseUp="endPan();" />
-    <mx:Button id="moveDown" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="50" right="50" bottom="0" height="20" mouseDown="startPan(0,-10);" mouseUp="endPan();" />
-    <mx:Button id="moveLeft" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" left="0" bottom="50" top="50" width="20" mouseDown="startPan(10,0);" mouseUp="endPan();" />
-    <mx:Button id="moveRight" borderColor="0x8888EE" fillColors="[0x8888EE, 0x8888EE]" fillAlphas="[0.3, 0.3]" highlightAlphas="[0.0, 0.0]" focusAlpha="0.8" cornerRadius="0" right="0" top="50" bottom="50" width="20" mouseDown="startPan(-10,0);" mouseUp="endPan();" />
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"  useHandCursor="true" buttonMode="true" mouseChildren="false" />
 
     <mx:VBox left="25" top="25">
      <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" width="40" height="40" />
