@@ -6,13 +6,14 @@ import mx.containers.Canvas;
 import obClasses.Experiment;
 import obClasses.CircularAtom;
 
+/** an experiment with circular atoms in a rectangular area */
 public class CircularAtomsExperiment extends Experiment
 {
 	public function CircularAtomsExperiment()
 	{
 		super();
-		this._sizeX=400;
-		this._sizeY=300;
+		this._sizeX=600;
+		this._sizeY=500;
 	}
 
 	override protected function createChildren():void

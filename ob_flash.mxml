@@ -10,11 +10,12 @@
  <mx:Script source="ob_flash.as" />
 
  <!-- The top-level component is a set of tabs -->
- <mx:TabNavigator id="mainTabs"  width="100%" height="100%"  paddingTop="10" paddingBottom="10"
-                 paddingLeft="10" paddingRight="10">
+ <mx:TabNavigator id="mainTabs"  width="100%" height="100%" paddingTop="5" paddingBottom="5"
+                 paddingLeft="5" paddingRight="5" backgroundAlpha="0.4" borderStyle="none" focusAlpha="0.4" 
+		horizontalGap="3" >
 
   <!-- The first tab contains the atoms collisions area and the challenges -->
-  <mx:VBox label="Challenges" paddingTop="10" paddingBottom="10"
+  <mx:VBox label="Atoms" paddingTop="10" paddingBottom="10"
                  paddingLeft="10" paddingRight="10" >
 
   <mx:HDividedBox width="100%" height="100%">
@@ -45,20 +46,21 @@
     </mx:VDividedBox>
 
    <!-- The right-hand part of the panel has the atoms collision area and various controls, within a Canvas. -->
-   <mx:Canvas width="70%" height="100%" id="collisionsPanel" borderStyle="solid" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off"  >
+   <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
 
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off"  useHandCursor="true" buttonMode="true" mouseChildren="false" />
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"  useHandCursor="true" buttonMode="true" mouseChildren="false" 
+	backgroundAlpha="0.1" />
 
-    <mx:VBox left="25" top="25">
-     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" width="40" height="40" />
-     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" width="40" height="40" />
+    <mx:VBox left="10" top="10">
+     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" />
+     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" click="zoom(1.0/2.0);" width="40" height="40" />
+     <mx:Button label="fit" id="fitButton" click="fitButtonClicked();" width="40" height="40" />
     </mx:VBox>
 
-    <mx:ControlBar bottom="0" left="10" right="10">
+    <mx:ControlBar bottom="0" left="0" right="10">
      <mx:Button icon="@Embed(source='assets/player_play.png')" disabledIcon="@Embed(source='assets/player_play_grey.png')" id="playButton" width="40" height="40" enabled="false" click="playButtonClicked();" />
      <mx:Button icon="@Embed(source='assets/player_pause.png')" disabledIcon="@Embed(source='assets/player_pause_grey.png')" id="pauseButton" width="40" height="40" enabled="true" click="pauseButtonClicked();" />
      <mx:Spacer width="100%"/>
