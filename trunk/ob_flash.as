@@ -20,23 +20,41 @@ public function appInit():void
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
 }
 
+/** fit the collisionsArea to the available screen area */
+public function fitButtonClicked():void
+{
+	collisionsArea.x=0;
+	collisionsArea.y=0;
+	collisionsArea.scaleX = collisionsArea.scaleY = Math.min(collisionsPanel.width/collisionsArea.areaX,
+		collisionsPanel.height/collisionsArea.areaY);
+}
+
 public function startDragging(event:MouseEvent):void 
 {
-	collisionsArea.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
-	collisionsArea.addEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
-	mouseGrabbed = new Point(event.localX,event.localY);
+	// these events are heard from anywhere (unlike the MOUSE_DOWN for collisionsArea that got us here)
+	// so it doesn't matter whether the mouse cursor is currently over the collisionsArea
+	stage.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
+	stage.addEventListener(MouseEvent.ROLL_OUT, stopDragging);
+	stage.addEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
+	// save the mouse coords for comparison
+	mouseGrabbed = new Point(event.stageX,event.stageY);
 }
 
 public function stopDragging(event:MouseEvent):void 
 {
-	collisionsArea.removeEventListener(MouseEvent.MOUSE_UP, stopDragging);
-	collisionsArea.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
+	stage.removeEventListener(MouseEvent.MOUSE_UP, stopDragging);
+	stage.removeEventListener(MouseEvent.ROLL_OUT, stopDragging);
+	stage.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
 }
 
 public function mouseMoving(event:MouseEvent):void 
 {
-	collisionsArea.x += event.localX - mouseGrabbed.x;
-	collisionsArea.y += event.localY - mouseGrabbed.y;
+	// move the area by the vector from the old to new mouse positions
+	var p:Point = new Point(event.stageX,event.stageY);
+	collisionsArea.x += p.x - mouseGrabbed.x;
+	collisionsArea.y += p.y - mouseGrabbed.y;
+	// and record the new mouse position for comparison with next time
+	mouseGrabbed = p;
 }
 
 public function switchExperimentType():void
