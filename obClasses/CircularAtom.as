@@ -11,6 +11,7 @@ import flash.geom.Matrix;
 import flash.display.GradientType;
 import flash.display.SpreadMethod;
 
+/** Has a 2D floating-point location and a fixed radius. */
 public class CircularAtom extends Atom
 {
 	protected const _R:Number = 20; // radius of each atom
@@ -25,8 +26,10 @@ public class CircularAtom extends Atom
 		this.state = 0;
 	}
 
+	/** the current velocity of the atom */
 	public function get velocity():Point { return _velocity; }
 
+	/** the current radius of the atom */
 	public function get R():Number { return _R; }
 
 	override protected function createChildren():void

@@ -4,6 +4,9 @@ package obClasses
 import obClasses.Experiment;
 import obClasses.LatticeAtom;
 
+/** A 2D square lattice world. 
+ * @see LatticeAtom
+*/
 public class LatticeAtomsExperiment extends Experiment
 {
 	public function LatticeAtomsExperiment()
@@ -29,6 +32,7 @@ public class LatticeAtomsExperiment extends Experiment
 		}
 	}
 
+	/** @inheritDoc */
 	override public function timeStep():void
 	{		
 		super.timeStep();
