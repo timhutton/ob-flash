@@ -14,7 +14,7 @@ public function appInit():void
 	resetTestMessage();
 
 	// we start off with the atoms moving
-	addEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
+	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
 
 	// we allow the collisions area to be dragged
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
@@ -110,7 +110,7 @@ private function resetTestMessage():void
 public function playButtonClicked():void
 {
 	// hook the frame ticker up to our update function
-	addEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
+	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
 	// enable/disable the play+pause buttons
 	playButton.enabled = false;
 	pauseButton.enabled = true;
@@ -119,7 +119,7 @@ public function playButtonClicked():void
 public function pauseButtonClicked():void
 {
 	// unhook the frame ticker from our update function
-	removeEventListener(Event.ENTER_FRAME, collisionsArea.doTimeStep);
+	removeEventListener(Event.ENTER_FRAME, collisionsArea.Update);
 	// enable/disable the play+pause buttons
 	playButton.enabled = true;
 	pauseButton.enabled = false;

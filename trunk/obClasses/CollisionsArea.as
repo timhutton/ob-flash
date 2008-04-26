@@ -7,23 +7,18 @@ import mx.controls.Text;
 import flash.events.Event;
 import obClasses.*;
 
-/** a visual space containing an experiment with moving atoms */
+/** A visual space containing an experiment with moving atoms. */
 public class CollisionsArea extends Canvas
 {
-	protected var _timesteps_per_frame:uint = 1;
-
-	/** we can run at a faster speed by processing more timesteps each frame */
+	/** The number of timesteps that are taken per frame update. Determines the speed of the application. */
 	public function get timesteps_per_frame():uint { return _timesteps_per_frame; }
-
-	/** we can run at a faster speed by processing more timesteps each frame */
 	public function set timesteps_per_frame(n:uint):void { _timesteps_per_frame=n; }
 
-	protected var iteration_count_label:Text = new Text();
-
-	protected var currentExperiment:Experiment;
-
+	/** The width of the area. */
 	public function get areaX():uint { return currentExperiment.sizeX; }
-	public function get areaY():uint { return currentExperiment.sizeY; }
+	/** The height of the area. */
+	public function get areaY():uint { return currentExperiment.sizeY; }
+	/** Replace the current experiment with a new one. */
 	public function newExperiment():void
 	{
 		scaleX = scaleY = 1.0;
@@ -59,13 +54,23 @@ public class CollisionsArea extends Canvas
 		parent.addChild(experiment_label);
 	}
 
-	public function doTimeStep(event:Event):void
+	/** Perform a number of timesteps, as determined by timesteps_per_frame. */
+	public function Update(event:Event):void
 	{
 		var i:uint;
 		for(i=0;i<timesteps_per_frame;i++)
 			currentExperiment.timeStep();
 		iteration_count_label.text = String(currentExperiment.iterations);
 	}
+
+	// protected things
+
+	protected var _timesteps_per_frame:uint = 1;
+
+	protected var iteration_count_label:Text = new Text();
+
+	protected var currentExperiment:Experiment;
+
 }
 
 }

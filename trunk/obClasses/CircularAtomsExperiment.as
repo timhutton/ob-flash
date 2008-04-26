@@ -6,7 +6,7 @@ import mx.containers.Canvas;
 import obClasses.Experiment;
 import obClasses.CircularAtom;
 
-/** an experiment with circular atoms in a rectangular area */
+/** An experiment with circular atoms in a 2D rectangular area. */
 public class CircularAtomsExperiment extends Experiment
 {
 	public function CircularAtomsExperiment()
@@ -32,6 +32,7 @@ public class CircularAtomsExperiment extends Experiment
 		}
 	}
 
+	/** @inheritDoc */
 	override public function timeStep():void
 	{
 		super.timeStep();

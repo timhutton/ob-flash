@@ -11,6 +11,7 @@ import flash.geom.Matrix;
 import flash.display.GradientType;
 import flash.display.SpreadMethod;
 
+/** An atom with a 2D integer location, lying on a square lattice. */
 public class LatticeAtom extends Atom
 {
 	// member functions
