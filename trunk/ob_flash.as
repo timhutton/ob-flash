@@ -13,7 +13,7 @@ public var mouseGrabbed:Point;
 public function appInit():void
 {
 	// retrieve query string var "experiment" from URL, load XML experiment file, initialise (TODO)
-	if(Application.application.parameters.hasOwnProperty("experiment"))
+	if(Application.application.parameters.hasOwnProperty("experiment") && Application.application.parameters.experiment.length>0)
 		Alert.show("Experiment URL received: " + Application.application.parameters.experiment); 
 
 	resetTestMessage();
