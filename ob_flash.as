@@ -1,6 +1,7 @@
 // the main functions for the appliction
 
 import flash.display.Stage;
+import mx.controls.Alert;
 import obClasses.*;
 
 private var currentLevel:Number = 1;
@@ -11,13 +12,27 @@ public var mouseGrabbed:Point;
 
 public function appInit():void
 {
+	// retrieve query string var "experiment" from URL, load XML experiment file, initialise (TODO)
+	if(Application.application.parameters.hasOwnProperty("experiment"))
+		Alert.show("Experiment URL received: " + Application.application.parameters.experiment); 
+
 	resetTestMessage();
 
 	// we start off with the atoms moving
 	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
 
+	// we update the iterations count label when the experiment updates
+	addEventListener(ExperimentUpdateEvent.UPDATE,updateItCountLabel);
+
 	// we allow the collisions area to be dragged
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
+}
+
+public function updateItCountLabel(event:ExperimentUpdateEvent):void
+{
+	// doesn't get through - what am i doing wrong?
+	Alert.show("rec");
+	itCountLabel.text = String(event.new_it_count);
 }
 
 /** fit the collisionsArea to the available screen area */

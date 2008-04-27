@@ -43,8 +43,8 @@ public class LatticeAtomsExperiment extends Experiment
 			atom.x += uint(Math.random()*1000)%3 - 1;
 			atom.y += uint(Math.random()*1000)%3 - 1;
 			// clamp to remain within area
-			atom.x = Math.max(0,Math.min(sizeX-1,atom.x));
-			atom.y = Math.max(0,Math.min(sizeY-1,atom.y));
+			atom.x = Math.max(0,Math.min(sizeX-3,atom.x));
+			atom.y = Math.max(0,Math.min(sizeY-3,atom.y));
 		}
 	}
 }

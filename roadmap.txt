@@ -10,7 +10,7 @@ Usage:
 - watch an experiment progress, add monitors to track replication rates, etc.
 - stop an experiment and change some settings, then restart it.
 - download an experiment from someone else and look at its parameters while it's running.
-- succeed in getting something to work in an experiment, make sure it happens reliably then post the experiment for others to discuss.
+- succeed in getting something to work in an experiment then post it for others to discuss.
 - load saved experiment (XML) in C++ version for maximum speed processing: development has two channels: the flash side for an introduction and UI fun, a C++ for hardcore multi-processor speed.
 - challenges take the form of partially-fixed experiments, where the other parameters are to be altered in order that the monitors show some desired state at a later stage: evaluation becomes a trivial check that some pre-specified binary-result monitor says yes. 
 - participants can do genuine science by proposing experiments: others can reproduce their results, system is well-specified and clear. 

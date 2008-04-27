@@ -51,8 +51,10 @@
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off"  useHandCursor="true" buttonMode="true" mouseChildren="false" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" useHandCursor="true" buttonMode="true" mouseChildren="false" 
 	backgroundAlpha="0.1" />
+
+    <mx:Label id="itCountLabel" text="-" right="10" top="10" />
 
     <mx:VBox left="10" top="10">
      <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" />
