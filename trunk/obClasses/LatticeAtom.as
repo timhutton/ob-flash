@@ -31,19 +31,19 @@ public class LatticeAtom extends Atom
 		this.graphics.beginFill(base_color);
 		this.graphics.drawRect(0,0,1,1);;
 		this.graphics.endFill();
-		
-		/*
+				
 		// and a text label to show the atom's type and state
 		var label:Label = new Label();
 		label.text = Atom.TYPES[this.type] + String(this.state);
 		label.setStyle("fontWeight","bold");
-		//label.setStyle("textAlign","center"); // (doesn't work?)
+		label.setStyle("textAlign","center");
+		label.setStyle("horizontalCenter","0");
 		label.setStyle("color","0xCCCCCC");
-		label.setStyle("fontSize",String(R-4));
+		label.setStyle("fontSize","1");
 		//label.alpha = 0.2; // (doesn't work?)
-		label.x = 5;
-		label.y = 5;
-		this.addChild(label);*/
+		label.x = -.5;
+		label.y = -.5;
+		this.addChild(label);
 
 		// let's get fancy and add a drop shadow too
 		/*var dropShadow:DropShadowFilter = new DropShadowFilter();
