@@ -31,7 +31,6 @@ public function appInit():void
 public function updateItCountLabel(event:ExperimentUpdateEvent):void
 {
 	// doesn't get through - what am i doing wrong?
-	Alert.show("rec");
 	itCountLabel.text = String(event.new_it_count);
 }
 

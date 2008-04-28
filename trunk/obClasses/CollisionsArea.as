@@ -15,6 +15,17 @@ public class CollisionsArea extends Canvas
 	public function get timesteps_per_frame():uint { return _timesteps_per_frame; }
 	public function set timesteps_per_frame(n:uint):void { _timesteps_per_frame=n; }
 
+	/** The number of timesteps (iterations) elapsed since the start of the experiment. */
+	public function get iterations():uint { return _iterations; }
+
+	protected function setIterations(ic:uint):void // (but try this with a protected setter function, it doesn't work)
+	{ 
+		_iterations=ic; 
+
+		// announce the update
+		dispatchEvent(new ExperimentUpdateEvent(_iterations,ExperimentUpdateEvent.UPDATE));
+	}
+
 	/** The width of the area. */
 	public function get areaX():uint { return currentExperiment.sizeX; }
 	/** The height of the area. */
@@ -25,10 +36,9 @@ public class CollisionsArea extends Canvas
 		removeChild(currentExperiment);
 		currentExperiment = new LatticeAtomsExperiment();
 		addChild(currentExperiment);
-		//iteration_count_label.text = String(currentExperiment.iterations);
 		width = currentExperiment.sizeX * scaleX;
 		height = currentExperiment.sizeY * scaleY;
-		//invalidateDisplayList(); // width and height doesn't seem to get through, even with this?
+		setIterations(0);
 	}
 
 	public function CollisionsArea()
@@ -43,11 +53,6 @@ public class CollisionsArea extends Canvas
 	{
 		super.createChildren();
 		addChild(currentExperiment);
-
-		// this isn't a good way to do things! (please help)
-		/*iteration_count_label.x=iteration_count_label.y=10;
-		iteration_count_label.text = String(currentExperiment.iterations);
-		parent.addChild(iteration_count_label);*/
 	}
 
 	/** Perform a number of timesteps, as determined by timesteps_per_frame. */
@@ -56,19 +61,17 @@ public class CollisionsArea extends Canvas
 		var i:uint;
 		for(i=0;i<timesteps_per_frame;i++)
 			currentExperiment.timeStep();
-		//iteration_count_label.text = String(currentExperiment.iterations);
 
-		// announce the update
-		dispatchEvent(new ExperimentUpdateEvent(currentExperiment.iterations,ExperimentUpdateEvent.UPDATE));
+		setIterations(iterations + timesteps_per_frame);
 	}
 
 	// protected things
 
 	protected var _timesteps_per_frame:uint = 1;
 
-	//protected var iteration_count_label:Text = new Text();
-
 	protected var currentExperiment:Experiment;
+
+	protected var _iterations:uint = 0;
 
 }
 
