@@ -40,7 +40,7 @@ public class LatticeAtom extends Atom
 		//label.setStyle("textAlign","center"); // doesn't work?
 		//label.setStyle("horizontalCenter","0"); // doesn't work?
 		label.setStyle("color","0xCCCCCC");
-		label.setStyle("fontSize","4");
+		label.setStyle("fontSize","3");
 		//label.alpha = 0.2; // (doesn't work?)
 		this.addChild(label);
 	}		

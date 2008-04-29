@@ -16,7 +16,7 @@
 
   <!-- The first tab contains the atoms collisions area and the challenges -->
   <mx:VBox label="Atoms" paddingTop="10" paddingBottom="10"
-                 paddingLeft="10" paddingRight="10" >
+                 paddingLeft="10" paddingRight="10" toolTip="Contains the current experiment with moving atoms" >
 
   <mx:HDividedBox width="100%" height="100%">
 
@@ -52,22 +52,22 @@
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
 	horizontalScrollPolicy="off" verticalScrollPolicy="off" useHandCursor="true" buttonMode="true" mouseChildren="false" 
-	backgroundAlpha="0.1" />
+	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." />
 
-    <mx:Label id="itCountLabel" text="-" right="10" top="10" />
+    <mx:Label id="itCountLabel" text="-" right="10" top="10" toolTip="The number of timesteps that have elapsed" />
 
     <mx:VBox left="10" top="10">
-     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" />
-     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" click="zoom(1.0/2.0);" width="40" height="40" />
-     <mx:Button label="fit" id="fitButton" click="fitButtonClicked();" width="40" height="40" />
+     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" toolTip="Hold down to zoom in" />
+     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" click="zoom(1.0/2.0);" width="40" height="40" toolTip="Hold down to zoom out" />
+     <mx:Button label="fit" id="fitButton" click="fitButtonClicked();" width="40" height="40" toolTip="Size the atoms area to fit the screen" />
     </mx:VBox>
 
     <mx:ControlBar bottom="0" left="0" right="10">
-     <mx:Button icon="@Embed(source='assets/player_play.png')" disabledIcon="@Embed(source='assets/player_play_grey.png')" id="playButton" width="40" height="40" enabled="false" click="playButtonClicked();" />
-     <mx:Button icon="@Embed(source='assets/player_pause.png')" disabledIcon="@Embed(source='assets/player_pause_grey.png')" id="pauseButton" width="40" height="40" enabled="true" click="pauseButtonClicked();" />
+     <mx:Button icon="@Embed(source='assets/player_play.png')" disabledIcon="@Embed(source='assets/player_play_grey.png')" id="playButton" width="40" height="40" enabled="false" click="playButtonClicked();" toolTip="Set the experiment running" />
+     <mx:Button icon="@Embed(source='assets/player_pause.png')" disabledIcon="@Embed(source='assets/player_pause_grey.png')" id="pauseButton" width="40" height="40" enabled="true" click="pauseButtonClicked();" toolTip="Pause the experiment" />
      <mx:Spacer width="100%"/>
-     <mx:Button label="slow" id="slowButton" click="slowButtonClicked();" enabled="false" />
-     <mx:Button label="fast" id="fastButton" click="fastButtonClicked();" />
+     <mx:Button label="slow" id="slowButton" click="slowButtonClicked();" enabled="false" toolTip="Run the experiment at a slow speed" />
+     <mx:Button label="fast" id="fastButton" click="fastButtonClicked();" toolTip="Run the experiment at a fast speed" />
     </mx:ControlBar>
 
    </mx:Canvas>
@@ -76,13 +76,13 @@
 
  </mx:VBox>
 
- <mx:VBox label="Reactions Editor" />
- <mx:VBox label="Graphs" />
- <mx:VBox label="Settings">
+ <mx:VBox label="Reactions Editor" toolTip="Change the atom types and states involved in the system-wide reactions here" />
+ <mx:VBox label="Graphs" toolTip="Contains graphs of the properties of the experiment that are being monitored" />
+ <mx:VBox label="Settings" toolTip="Change the properties of the experiment" >
    <mx:Button label="switch to lattice" click="switchExperimentType();" />
  </mx:VBox>
  <mx:VBox label="Help" />
- <mx:VBox label="About">
+ <mx:VBox label="About" toolTip="The license and links to the source code" >
    <mx:Text text="blah" />
  </mx:VBox>
 
