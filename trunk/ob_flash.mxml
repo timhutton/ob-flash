@@ -39,9 +39,7 @@
 
       </mx:Panel>
 
-      <mx:Panel id="reactionsPanel" title="Reactions Editor" height="50%" width="100%" borderAlpha="0.8">
-        <!--<mx:Button label="switch" click="switchExperimentType();" /> (not yet working)-->
-      </mx:Panel>
+      <mx:Panel id="reactionsPanel" title="Reactions Editor" height="50%" width="100%" borderAlpha="0.8" />
  
     </mx:VDividedBox>
 
@@ -51,7 +49,7 @@
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
-	horizontalScrollPolicy="off" verticalScrollPolicy="off" useHandCursor="true" buttonMode="true" mouseChildren="false" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true" mouseChildren="true" 
 	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." />
 
     <mx:Label id="itCountLabel" text="-" right="10" top="10" toolTip="The number of timesteps that have elapsed" />
@@ -81,8 +79,8 @@
  <mx:VBox label="Settings" toolTip="Change the properties of the experiment" >
    <mx:Button label="switch to lattice" click="switchExperimentType();" />
  </mx:VBox>
- <mx:VBox label="Help" />
- <mx:VBox label="About" toolTip="The license and links to the source code" >
+ <mx:VBox label="Help" toolTip="Explains what this is all about and what you can do with it" />
+ <mx:VBox label="About" toolTip="Links to the source code and the software license" >
    <mx:Text text="blah" />
  </mx:VBox>
 

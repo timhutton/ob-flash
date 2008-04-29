@@ -59,6 +59,9 @@ public function stopDragging(event:MouseEvent):void
 	stage.removeEventListener(MouseEvent.MOUSE_UP, stopDragging);
 	stage.removeEventListener(MouseEvent.ROLL_OUT, stopDragging);
 	stage.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoving);
+	
+	// we turn off the collisions area tooltip because the user has worked it out now and it's a bit annoying
+	if(collisionsArea.toolTip!="") collisionsArea.toolTip="";
 }
 
 public function mouseMoving(event:MouseEvent):void 

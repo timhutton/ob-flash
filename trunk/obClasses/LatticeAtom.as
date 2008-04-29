@@ -3,12 +3,6 @@ package obClasses
 
 import obClasses.Atom;
 import mx.controls.Label;
-import mx.controls.Text;
-import mx.utils.ColorUtil;
-import flash.geom.Point;
-import flash.geom.Matrix;
-import flash.display.GradientType;
-import flash.display.SpreadMethod;
 
 /** An atom with a 2D integer location, lying on a square lattice. */
 public class LatticeAtom extends Atom
@@ -20,7 +14,6 @@ public class LatticeAtom extends Atom
 	public function LatticeAtom()
 	{
 		super();
-
 	}
 
 	override protected function createChildren():void
@@ -35,13 +28,11 @@ public class LatticeAtom extends Atom
 				
 		// and a text label to show the atom's type and state
 		var label:Label = new Label();
-		label.text = Atom.TYPES[this.type] + String(this.state);
-		label.setStyle("fontWeight","bold");
-		//label.setStyle("textAlign","center"); // doesn't work?
-		//label.setStyle("horizontalCenter","0"); // doesn't work?
-		label.setStyle("color","0xCCCCCC");
-		label.setStyle("fontSize","3");
-		//label.alpha = 0.2; // (doesn't work?)
+		label.text = TYPES[type]+String(state);
+		label.setStyle("color","0xEEEEEE");
+		label.setStyle("fontSize","4");
+		label.setStyle("textAlign","center");
+		label.x = -2;
 		this.addChild(label);
 	}		
 }

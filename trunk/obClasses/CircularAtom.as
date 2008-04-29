@@ -22,8 +22,6 @@ public class CircularAtom extends Atom
 	public function CircularAtom()
 	{
 		super();
-
-		this.state = 0;
 	}
 
 	/** the current velocity of the atom */
@@ -60,10 +58,10 @@ public class CircularAtom extends Atom
 		label.setStyle("fontWeight","bold");
 		//label.setStyle("textAlign","center"); // (doesn't work?)
 		label.setStyle("color","0xCCCCCC");
-		label.setStyle("fontSize",String(R-4));
+		label.setStyle("fontSize",String(R-6));
 		//label.alpha = 0.2; // (doesn't work?)
-		label.x = 5;
-		label.y = 5;
+		label.x = 3;
+		label.y = 7;
 		this.addChild(label);
 
 		// let's get fancy and add a drop shadow too
