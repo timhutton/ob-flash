@@ -4,22 +4,22 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="ExperimentUpdateEvent,obClasses.ExperimentUpdateEvent,UPDATE,_new_it_count,new_it_count,clone" name="keywords">
-<title>obClasses.ExperimentUpdateEvent</title>
+<meta content="ReactionEvent,obClasses.ReactionEvent,REACTION,_timestamp,timestamp,clone" name="keywords">
+<title>obClasses.ReactionEvent</title>
 </head>
 <body>
 <script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'ExperimentUpdateEvent - API Documentation';
+				asdocTitle = 'ReactionEvent - API Documentation';
 				var baseRef = '../';
 				window.onload = configPage;
 			--></script>
 <table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
 <tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?obClasses/ExperimentUpdateEvent.html&amp;obClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?obClasses/ReactionEvent.html&amp;obClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ExperimentUpdateEvent</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ReactionEvent</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
 </tr>
 <tr class="titleTableRow3">
 <td colspan="2">&nbsp;</td>
@@ -27,7 +27,7 @@
 </table>
 <script type="text/javascript" language="javascript">
 <!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ExperimentUpdateEvent"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ReactionEvent"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
 --></script>
 <div class="MainContent">
 <table cellspacing="0" cellpadding="0" class="classHeaderTable">
@@ -35,13 +35,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">obClasses</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ExperimentUpdateEvent</td>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ReactionEvent</td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ExperimentUpdateEvent <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../images/inherit-arrow.gif"> flash.events.Event</td>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ReactionEvent <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../images/inherit-arrow.gif"> flash.events.Event</td>
 </tr>
 </table>
-<p></p> Broadcast when the experiment makes an update. <p></p>
+<p></p> Broadcast when a reaction occurs. <p></p>
 <br>
 <hr>
 </div>
@@ -53,8 +53,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#new_it_count">new_it_count</a> : uint<div class="summaryTableDescription">[read-only] the new iteration count being announced by the event.</div>
-</td><td class="summaryTableOwnerCol">ExperimentUpdateEvent</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timestamp">timestamp</a> : uint<div class="summaryTableDescription">[read-only] Contains the iterations count when the reaction occurred.</div>
+</td><td class="summaryTableOwnerCol">ReactionEvent</td>
 </tr>
 </table>
 </div>
@@ -66,8 +66,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_new_it_count">_new_it_count</a> : uint = 1<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">ExperimentUpdateEvent</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_timestamp">_timestamp</a> : uint<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">ReactionEvent</td>
 </tr>
 </table>
 </div>
@@ -81,16 +81,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#ExperimentUpdateEvent()">ExperimentUpdateEvent</a>(ic:uint, type:String)</div>
+<a class="signatureLink" href="#ReactionEvent()">ReactionEvent</a>(ic:uint, type:String)</div>
 <div class="summaryTableDescription"> Constructor.</div>
-</td><td class="summaryTableOwnerCol">ExperimentUpdateEvent</td>
+</td><td class="summaryTableOwnerCol">ReactionEvent</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():Event</div>
 <div class="summaryTableDescription"> Override the inherited clone function.</div>
-</td><td class="summaryTableOwnerCol">ExperimentUpdateEvent</td>
+</td><td class="summaryTableOwnerCol">ReactionEvent</td>
 </tr>
 </table>
 </div>
@@ -102,8 +102,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#UPDATE">UPDATE</a> : String = "ExperimentUpdateEvent"<div class="summaryTableDescription">[static] Used for when the experiment has updated.</div>
-</td><td class="summaryTableOwnerCol">ExperimentUpdateEvent</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#REACTION">REACTION</a> : String = "ReactionEvent"<div class="summaryTableDescription">[static] Used for when the experiment has updated.</div>
+</td><td class="summaryTableOwnerCol">ReactionEvent</td>
 </tr>
 </table>
 </div>
@@ -114,37 +114,37 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
-<a name="_new_it_count"></a>
+<a name="_timestamp"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">_new_it_count</td><td class="detailHeaderType">property</td>
+<td class="detailHeaderName">_timestamp</td><td class="detailHeaderType">property</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _new_it_count:uint = 1</code>
+<code>protected var _timestamp:uint</code>
 </div>
-<a name="new_it_count"></a>
+<a name="timestamp"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">new_it_count</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">timestamp</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>new_it_count:uint</code>&nbsp;&nbsp;[read-only]<p> the new iteration count being announced by the event. </p><span class="label">Implementation</span>
+<code>timestamp:uint</code>&nbsp;&nbsp;[read-only]<p> Contains the iterations count when the reaction occurred. </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get new_it_count():uint</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timestamp():uint</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
-<a name="ExperimentUpdateEvent()"></a>
+<a name="ReactionEvent()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">ExperimentUpdateEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+<td class="detailHeaderName">ReactionEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function ExperimentUpdateEvent(ic:uint, type:String)</code><p> Constructor. </p><span class="label">Parameters</span>
+<code>public function ReactionEvent(ic:uint, type:String)</code><p> Constructor. </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">ic</span>:uint</code></td>
@@ -176,14 +176,14 @@ showHideInherited();
 </div>
 <a name="constantDetail"></a>
 <div class="detailSectionHeader">Constant detail</div>
-<a name="UPDATE"></a>
+<a name="REACTION"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">UPDATE</td><td class="detailHeaderType">constant</td>
+<td class="detailHeaderName">REACTION</td><td class="detailHeaderType">constant</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public static const UPDATE:String = "ExperimentUpdateEvent"</code><p> Used for when the experiment has updated. </p></div>
+<code>public static const REACTION:String = "ReactionEvent"</code><p> Used for when the experiment has updated. </p></div>
 <br>
 <br>
 <hr>

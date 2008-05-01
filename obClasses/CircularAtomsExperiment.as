@@ -9,6 +9,7 @@ import obClasses.CircularAtom;
 /** An experiment with circular atoms in a 2D rectangular area. */
 public class CircularAtomsExperiment extends Experiment
 {
+	/** Constructor. */
 	public function CircularAtomsExperiment()
 	{
 		super();
@@ -16,6 +17,7 @@ public class CircularAtomsExperiment extends Experiment
 		this._sizeY=500;
 	}
 
+	/** @inheritDoc */
 	override protected function createChildren():void
 	{
 		super.createChildren();
@@ -48,6 +50,7 @@ public class CircularAtomsExperiment extends Experiment
 				// (safest implementation is to ensure the atom is moving away from the edge after the bounce)
 				atom.velocity.x = Math.abs(atom.velocity.x); 
 				atom.x=0; 
+				dispatchEvent(new ReactionEvent(iterations,ReactionEvent.REACTION));
 			}
 			else if(atom.x>=this.sizeX-atom.R*2) 
 			{ 
