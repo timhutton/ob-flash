@@ -14,13 +14,14 @@ public class ExperimentUpdateEvent extends Event
 	/** Used for when the experiment has updated. */
 	public static const UPDATE:String = "ExperimentUpdateEvent";
 
+	/** Constructor. */
 	public function ExperimentUpdateEvent(ic:uint,type:String)
 	{
 		super(type,true,true);
 		_new_it_count = ic;
 	}
 
-	/** must override the inherited clone function */
+	/** Override the inherited clone function. */
 	override public function clone():Event 
 	{
 	      return new ExperimentUpdateEvent(_new_it_count,UPDATE);
