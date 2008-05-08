@@ -30,7 +30,6 @@ public function appInit():void
 
 public function updateItCountLabel(event:ExperimentUpdateEvent):void
 {
-	// doesn't get through - what am i doing wrong?
 	itCountLabel.text = String(event.new_it_count);
 }
 
@@ -79,6 +78,11 @@ public function switchExperimentType():void
 	collisionsArea.newExperiment();
 }
 
+public function localeChanged(event:Event):void
+{
+	resourceManager.localeChain = [event.currentTarget.selectedItem.data];
+}
+
 public function startZoom(f:Number):void
 {
 	zoomSpeed = f;
@@ -121,7 +125,7 @@ public function nextLevel():void
 
 private function resetTestMessage():void
 {
-	testMessage.text = "Add chemical reactions using the editor below. Hit the test button when you have completed the task.";
+	testMessage.text = resourceManager.getString("interface","level.error.title");
 }
 
 public function playButtonClicked():void

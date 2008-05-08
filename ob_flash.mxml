@@ -3,11 +3,19 @@
 <!-- ob-flash is free software, under the GPL v3 - get the code at http://ob-flash.googlecode.com -->
 
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
-                 paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"  		
+		paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"
 		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="10" >
+
+ <!-- The text on the controls is localized throughout, so we need to load the locale. -->
+ <mx:Metadata>
+   [ResourceBundle("interface")]
+   [ResourceBundle("levels")]
+ </mx:Metadata>
 
  <!-- Most of the code is contained in .as files, this .mxml just contains the visual layout. -->
  <mx:Script source="ob_flash.as" />
+
+ <mx:Canvas width="100%" height="100%">
 
  <!-- The top-level component is a set of tabs -->
  <mx:TabNavigator id="mainTabs"  width="100%" height="100%" paddingTop="5" paddingBottom="5"
@@ -28,7 +36,7 @@
 
         <mx:VBox>
 
-          <mx:Text text="Break the membrane to release the f1 atom." width="100%" />
+          <mx:Text htmlText="{resourceManager.getString('levels','intro.challenge')}" width="100%" />
           <mx:HBox>
             <mx:Button id="testButton" label="Test" click="testLevel();"/>
             <mx:Button id="nextLevelButton" label="Next level" click="nextLevel();" enabled="false"/>
@@ -87,5 +95,13 @@
  </mx:VBox>
 
  </mx:TabNavigator>
+
+ <mx:ComboBox right="0" top="0" close="localeChanged(event);">
+   <mx:ArrayCollection>
+        <mx:Object label="fr" data="fr_FR"/>
+        <mx:Object label="en" data="en_US"/>
+   </mx:ArrayCollection> 
+ </mx:ComboBox>
+ </mx:Canvas>
 
 </mx:Application>

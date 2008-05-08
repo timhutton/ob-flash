@@ -19,6 +19,10 @@ public class LatticeAtomsExperiment extends Experiment
 	override protected function createChildren():void
 	{
 		super.createChildren();
+
+		// DEBUG
+		resourceManager.localeChain = ["fr_FR"];
+
 		// create some atoms in random positions
 		var i:int;
 		const N_ATOMS:int = 100;

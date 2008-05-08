@@ -18,21 +18,29 @@ public class Graph extends Canvas
 	{
 		super.createChildren();
 
-		// we listen for certain events
-		stage.addEventListener(ReactionEvent.REACTION,onReactionEvent);
-
 		// prepare for drawing
 		graphics.lineStyle(2, 0x990000, .75);
+
+		// OK, ready to listen for certain events
+		stage.addEventListener(ReactionEvent.REACTION,onReactionEvent);
 	}
 
 	protected function onReactionEvent(event:ReactionEvent):void
 	{
 		// accumulate the graph (just a dummy one for now)
-		var xp:Number = event.timestamp*3;
-		graphics.lineTo(xp,Math.random()*200);
+		var xp:Number = (event.timestamp-_start_timestep)*3;
 		if(xp>width)
-			scaleX = width/xp;
+		{
+			graphics.clear();
+			graphics.lineStyle(2, 0x990000, .75); // seems like we need to call this again after clear()
+			_start_timestep = event.timestamp;		
+			xp = 0;	
+		}
+		graphics.moveTo(xp,0);
+		graphics.lineTo(xp,Math.random()*200);
 	}
+
+	protected var _start_timestep:uint = 0;
 }
 
 }
