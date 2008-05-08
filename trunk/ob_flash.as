@@ -104,13 +104,9 @@ public function testLevel():void
 {
 	if(true)
 	{
-		testMessage.text = "Test passed! You can now proceed to the next level.";
+		testMessage.text = resourceManager.getString("interface","level.success.title");
 		testButton.enabled = false;
 		nextLevelButton.enabled = true;
-	}
-	else
-	{
-		testMessage.text = "Test not yet passed. Please keep trying.";
 	}
 }
 
@@ -132,6 +128,7 @@ public function playButtonClicked():void
 {
 	// hook the frame ticker up to our update function
 	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
+
 	// enable/disable the play+pause buttons
 	playButton.enabled = false;
 	pauseButton.enabled = true;
@@ -141,6 +138,7 @@ public function pauseButtonClicked():void
 {
 	// unhook the frame ticker from our update function
 	removeEventListener(Event.ENTER_FRAME, collisionsArea.Update);
+
 	// enable/disable the play+pause buttons
 	playButton.enabled = true;
 	pauseButton.enabled = false;
@@ -159,7 +157,7 @@ public function slowButtonClicked():void
 public function fastButtonClicked():void
 {
 	// set the speed to do four timesteps every frame tick
-	collisionsArea.timesteps_per_frame=10;
+	collisionsArea.timesteps_per_frame=20;
 
 	// enable/disable the slow/fast buttons
 	slowButton.enabled = true;
@@ -180,13 +178,9 @@ internal function zoom(f:Number):void
 
 	if(zoomSpeed==1.0) return; // stopped zooming
 
-	invalidateDisplayList(); // try to delay redraw until we're finished
-
-	collisionsArea.scaleX = collisionsArea.scaleY = new_scale;
-
 	// we zoom from the centre of the viewport, so need to account for previous scale and translation
 	const p:Point = new Point(collisionsPanel.width/2,collisionsPanel.height/2);
 	collisionsArea.x = p.x - f * ( p.x - collisionsArea.x );
 	collisionsArea.y = p.y - f * ( p.y - collisionsArea.y );
-
+	collisionsArea.scaleX = collisionsArea.scaleY = new_scale;
 }
