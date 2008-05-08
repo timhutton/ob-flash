@@ -34,3 +34,4 @@ http://www.storage.org/stuff/ob_flash.swf?experiment=http://www.funzone.com/jumb
 - implement i18n, using .properties files from OB (thanks Bertrand!)
 - implement standalone C++ version.
 - implement catalysts, floods, mutations, as needed for evolution.
+- recreate all published experiments as xml experiment files, partly as a test of coverage.
