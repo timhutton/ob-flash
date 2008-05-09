@@ -4,7 +4,7 @@
 
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" paddingTop="10" paddingBottom="10"
 		paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"
-		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="25" >
+		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="50" >
 
  <!-- The text on the controls is localized throughout, so we need to load the locale. -->
  <mx:Metadata>
@@ -41,7 +41,6 @@
             <mx:Button id="testButton" label="Test" click="testLevel();"/>
             <mx:Button id="nextLevelButton" label="Next level" click="nextLevel();" enabled="false"/>
           </mx:HBox>
-          <mx:Text id="testMessage" text="{resourceManager.getString('interface','level.error.title')}" width="100%" />
 
         </mx:VBox>
 
@@ -52,7 +51,7 @@
     </mx:VDividedBox>
 
    <!-- The right-hand part of the panel has the atoms collision area and various controls, within a Canvas. -->
-   <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+   <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" autoLayout="false" >
 
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
@@ -60,7 +59,7 @@
 	horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true" mouseChildren="true" 
 	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." />
 
-    <mx:Label id="itCountLabel" text="-" right="10" top="10" toolTip="The number of timesteps that have elapsed" />
+    <mx:Label id="itCountLabel" text="-" right="10" top="10" width="50" toolTip="The number of timesteps that have elapsed" />
 
     <mx:VBox left="10" top="10">
      <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" toolTip="Hold down to zoom in" />
