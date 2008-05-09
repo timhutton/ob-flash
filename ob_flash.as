@@ -16,8 +16,6 @@ public function appInit():void
 	if(Application.application.parameters.hasOwnProperty("experiment") && Application.application.parameters.experiment.length>0)
 		Alert.show("Experiment URL received: " + Application.application.parameters.experiment); 
 
-	resetTestMessage();
-
 	// we start off with the atoms moving
 	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
 
@@ -81,6 +79,7 @@ public function switchExperimentType():void
 public function localeChanged(event:Event):void
 {
 	resourceManager.localeChain = [event.currentTarget.selectedItem.data];
+	invalidateDisplayList(); // some text controls need to be updated
 }
 
 public function startZoom(f:Number):void
@@ -104,7 +103,6 @@ public function testLevel():void
 {
 	if(true)
 	{
-		testMessage.text = resourceManager.getString("interface","level.success.title");
 		testButton.enabled = false;
 		nextLevelButton.enabled = true;
 	}
@@ -116,12 +114,6 @@ public function nextLevel():void
 	levelPanel.title = "Level " + String(currentLevel);
 	testButton.enabled = true;
 	nextLevelButton.enabled = false;
-	resetTestMessage();
-}
-
-private function resetTestMessage():void
-{
-	testMessage.text = resourceManager.getString("interface","level.error.title");
 }
 
 public function playButtonClicked():void
@@ -156,7 +148,7 @@ public function slowButtonClicked():void
 
 public function fastButtonClicked():void
 {
-	// set the speed to do four timesteps every frame tick
+	// set the speed to do more timesteps every frame tick
 	collisionsArea.timesteps_per_frame=20;
 
 	// enable/disable the slow/fast buttons
@@ -169,7 +161,7 @@ internal function zoom(f:Number):void
 	const new_scale:Number = collisionsArea.scaleX * f;  // (we keep scaleY == scaleX)
 
 	// don't want to zoom in/out too far
-	zoomInButton.enabled = (new_scale < 16.0);
+	zoomInButton.enabled = (new_scale < 2.0); // too big and bitmap caching becomes very slow
 	zoomOutButton.enabled = (new_scale > 1.0/16.0);
 
 	// stop zooming if the button becomes disabled

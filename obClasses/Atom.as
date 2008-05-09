@@ -8,7 +8,8 @@ public class Atom extends Canvas
 {
 	protected const _type:int = int(Math.random()*1000) % 6;
 
-	/** atoms have fixed type a-f, represented as 0-5 */	public function get type():int { return this._type; }
+	/** atoms have fixed type a-f, represented as 0-5 */
+	public function get type():int { return this._type; }
 
 	protected var _state:int = int(Math.random()*1000) % 150;
 	/** atoms have a variable state */
@@ -25,6 +26,9 @@ public class Atom extends Canvas
 		this.toolTip = TYPES[type]+String(_state);
 		this.buttonMode = true;
 		this.useHandCursor = true;
+		this.autoLayout = false;
+		this.includeInLayout = false;
+		this.cacheAsBitmap = true;
 	}
 
 	protected static var TYPES:Array = ["a","b","c","d","e","f"];

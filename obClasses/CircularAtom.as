@@ -5,7 +5,6 @@ import obClasses.Atom;
 import mx.controls.Label;
 import mx.controls.Text;
 import mx.utils.ColorUtil;
-//import flash.filters.DropShadowFilter;
 import flash.geom.Point;
 import flash.geom.Matrix;
 import flash.display.GradientType;
@@ -14,8 +13,12 @@ import flash.display.SpreadMethod;
 /** Has a 2D floating-point location and a fixed radius. */
 public class CircularAtom extends Atom
 {
-	protected const _R:Number = 20; // radius of each atom
-	protected var _velocity:Point = new Point(Math.random()*R*2-R,Math.random()*R*2-R);
+	/** the radius of the atom */
+	public static const R:Number = 20; // radius of each atom
+
+	public static const INITIAL_SPEED:Number = 5;
+
+	protected var _velocity:Point = new Point(Math.random()*INITIAL_SPEED*2-INITIAL_SPEED,Math.random()*INITIAL_SPEED*2-INITIAL_SPEED);
 
 	// member functions
 
@@ -27,8 +30,6 @@ public class CircularAtom extends Atom
 	/** the current velocity of the atom */
 	public function get velocity():Point { return _velocity; }
 
-	/** the current radius of the atom */
-	public function get R():Number { return _R; }
 
 	override protected function createChildren():void
 	{
@@ -62,14 +63,8 @@ public class CircularAtom extends Atom
 		//label.alpha = 0.2; // (doesn't work?)
 		label.x = 3;
 		label.y = 7;
+		label.includeInLayout = false;
 		this.addChild(label);
-
-		// let's get fancy and add a drop shadow too
-		/*var dropShadow:DropShadowFilter = new DropShadowFilter();
-		dropShadow.alpha = 0.4;
-		dropShadow.distance = 8.0;
-		dropShadow.blurX = dropShadow.blurY = 8.0;
-		this.filters = [dropShadow];*/
 	}		
 }
 
