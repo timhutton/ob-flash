@@ -43,6 +43,8 @@ public class CircularAtomsExperiment extends Experiment
 		moveAtoms();
 		bounceAtomsOffWalls();
 		bounceAtomsOffEachOther();
+		for(var i:uint=0;i<bond_pairs.length;i+=2)
+			bounceTwoAtomsOffEachOthersBonds(bond_pairs[i+0],bond_pairs[i+1]);
 	}
 
 	protected function bounceAtomsOffWalls():void
@@ -91,6 +93,56 @@ public class CircularAtomsExperiment extends Experiment
 		const d:Number = CircularAtom.R*2;
 		const d2:Number = d*d;
 			
+		if (Math.abs(dx) > d || Math.abs(dy) > d) 
+			return;
+		if (distance2 > d2)
+			return;
+		
+		// make absolutely elastic collision
+		var mag:Number = dvx*dx + dvy*dy;
+		
+		// test that balls move towards each other	
+		if (mag > 0) 
+			return;
+	
+		mag /= distance2;
+		
+		var delta_vx:Number = dx*mag;
+		var delta_vy:Number = dy*mag;
+		
+		a.velocity.x -= delta_vx;
+		a.velocity.y -= delta_vy;
+		
+		b.velocity.x += delta_vx;
+		b.velocity.y += delta_vy;
+
+		// DEBUG: also bond these two together, if one/both currently unbonded 
+		if(bond_pairs.indexOf(a)==-1 || bond_pairs.indexOf(b)==-1)
+		{
+			bond_pairs.push(a);
+			bond_pairs.push(b);
+		}
+	}
+
+	protected function bounceTwoAtomsOffEachOthersBonds(a:CircularAtom,b:CircularAtom):void
+	{
+		// we simply pretend that b is on the other side of a
+		const bond_d:Number = CircularAtom.R*3;
+		const ghost_d:Number = bond_d + CircularAtom.R*2;
+		var pre_dist:Number = Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+		var b2x:Number = b.x + (a.x-b.x)*ghost_d/pre_dist;
+		var b2y:Number = b.y + (a.y-b.y)*ghost_d/pre_dist;
+
+		const d:Number = CircularAtom.R*2;
+		const d2:Number = d*d;
+			
+		// calculate some vectors 
+		var dx:Number = a.x - b2x;
+		var dy:Number = a.y - b2y;
+		var dvx:Number = a.velocity.x - b.velocity.x;
+		var dvy:Number = a.velocity.y - b.velocity.y;	
+		var distance2:Number = dx*dx + dy*dy;
+
 		if (Math.abs(dx) > d || Math.abs(dy) > d) 
 			return;
 		if (distance2 > d2)

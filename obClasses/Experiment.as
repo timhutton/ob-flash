@@ -22,6 +22,7 @@ public class Experiment extends Canvas
 	// protected things
 
 	protected var atoms:Array = new Array();
+	protected var bond_pairs:Array = new Array();
 	protected var _sizeX:uint;
 	protected var _sizeY:uint;
 	protected var _iterations:uint = 0;

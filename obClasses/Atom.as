@@ -34,6 +34,5 @@ public class Atom extends Canvas
 	protected static var TYPES:Array = ["a","b","c","d","e","f"];
 
 	protected static var COLORS:Array = [0xcfcf00,0x5f5f5f,0x0753db,0xee10ac,0xef160f,0x00df06];
-
 }
 }
