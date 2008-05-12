@@ -1,6 +1,7 @@
 // the main functions for the appliction
 
 import flash.display.Stage;
+import flash.geom.Matrix;
 import mx.controls.Alert;
 import obClasses.*;
 
@@ -158,21 +159,20 @@ public function fastButtonClicked():void
 
 internal function zoom(f:Number):void
 {
-	const new_scale:Number = collisionsArea.scaleX * f;  // (we keep scaleY == scaleX)
-
 	// don't want to zoom in/out too far
-	zoomInButton.enabled = (new_scale < 2.0); // too big and bitmap caching becomes very slow
-	zoomOutButton.enabled = (new_scale > 1.0/16.0);
+	zoomInButton.enabled = (collisionsArea.scaleX * f < 2.0); // too big and bitmap caching becomes very slow
+	zoomOutButton.enabled = (collisionsArea.scaleX * f > 1.0/16.0);
 
 	// stop zooming if the button becomes disabled
-	if(zoomSpeed>1.0 && !zoomInButton.enabled) endZoom();
-	if(zoomSpeed<1.0 && !zoomOutButton.enabled) endZoom();
+	if( (zoomSpeed>1.0 && !zoomInButton.enabled) || (zoomSpeed<1.0 && !zoomOutButton.enabled) )
+	{
+		endZoom();
+		return;
+	}
 
-	if(zoomSpeed==1.0) return; // stopped zooming
-
-	// we zoom from the centre of the viewport, so need to account for previous scale and translation
-	const p:Point = new Point(collisionsPanel.width/2,collisionsPanel.height/2);
-	collisionsArea.x = p.x - f * ( p.x - collisionsArea.x );
-	collisionsArea.y = p.y - f * ( p.y - collisionsArea.y );
-	collisionsArea.scaleX = collisionsArea.scaleY = new_scale;
+	// we zoom from the centre of the viewport, so need to account for previous translation
+	collisionsArea.x = (1.0 - f) * collisionsPanel.width / 2.0 + f * collisionsArea.x ;
+	collisionsArea.y = (1.0 - f) * collisionsPanel.height / 2.0 + f * collisionsArea.y ;
+	collisionsArea.scaleX *= f;
+	collisionsArea.scaleY *= f;
 }
