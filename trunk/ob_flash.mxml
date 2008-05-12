@@ -62,8 +62,8 @@
     <mx:Label id="itCountLabel" text="-" right="10" top="10" width="50" toolTip="The number of timesteps that have elapsed" />
 
     <mx:VBox left="10" top="10">
-     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" click="zoom(2.0);" width="40" height="40" toolTip="Hold down to zoom in" />
-     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" click="zoom(1.0/2.0);" width="40" height="40" toolTip="Hold down to zoom out" />
+     <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" width="40" height="40" toolTip="Hold down to zoom in" />
+     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" width="40" height="40" toolTip="Hold down to zoom out" />
      <mx:Button label="fit" id="fitButton" click="fitButtonClicked();" width="40" height="40" toolTip="Size the atoms area to fit the screen" />
     </mx:VBox>
 
