@@ -57,7 +57,7 @@
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
 	horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true" mouseChildren="true" 
-	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." />
+	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." includeInLayout="false" autoLayout="false" />
 
     <mx:Label id="itCountLabel" text="-" right="10" top="10" width="50" toolTip="The number of timesteps that have elapsed" />
 
