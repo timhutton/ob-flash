@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.sq3.org.uk/Experiment"
+xmlns="http://www.sq3.org.uk/Experiment"
+elementFormDefault="qualified"
+version="0.0.1">
+
+<!-- Root element: experiment contains a description of this experimental setup together 
+with the parameters and initial conditions. 
+-->
+<xs:element name="experiment">
+    <xs:complexType>
+      <xs:sequence>
+	  <xs:element ref="about" minOccurs="0"/>
+          <xs:choice>
+            <xs:element ref="continuous_2d_physics" />
+    	      <xs:element ref="lattice_2d_physics" />
+	    </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="experiment.attributes"/>
+    </xs:complexType>
+</xs:element>
+
+<!-- The version attribute specifies what schema versions are validated by this document. -->
+<xs:attributeGroup name="experiment.attributes">
+ <xs:attribute name="version" use="required">
+  <xs:simpleType>
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="0.0.1"/>
+	</xs:restriction>
+  </xs:simpleType>
+ </xs:attribute>
+</xs:attributeGroup>
+
+<!-- The about section contains the author's details, and a description of the experiment. -->
+<xs:element name="about">
+ <xs:complexType>
+  <xs:sequence>
+    <xs:element name="username" type="xs:string" />
+    <xs:element name="email" type="xs:anyURI" minOccurs="0" />
+    <xs:element name="summary" type="xs:string" minOccurs="0" />
+    <xs:element name="description" type="xs:string" minOccurs="0" />
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<!-- Specifies that the physics of the experiment is continuous-space and two-dimensional. -->
+<xs:element name="continuous_2d_physics">
+ <xs:complexType>
+  <xs:sequence>
+    <xs:element name="width" type="xs:float" />
+    <xs:element name="height" type="xs:float" />
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<!-- Specifies that the physics of the experiment is a two-dimensional square lattice. -->
+<xs:element name="lattice_2d_physics">
+ <xs:complexType>
+  <xs:sequence>
+    <xs:element name="width" type="xs:unsignedInt" />
+    <xs:element name="height" type="xs:unsignedInt" />
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema>

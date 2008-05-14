@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<experiment
+xmlns="http://www.sq3.org.uk/Experiment" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sq3.org.uk/Experiment experiment.xsd" 
+version="0.0.1">
+
+<about>
+  <username>Eric the Magical Cat</username>
+  <email>eric@bananas.com</email>
+  <summary>designed to destroy</summary>
+  <description>this was created in secret
+in a laboratory
+</description>
+</about>
+
+<continuous_2d_physics>
+  <width>300</width>
+  <height>200.0</height>
+</continuous_2d_physics>
+
+</experiment>
