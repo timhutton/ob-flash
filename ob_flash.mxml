@@ -51,13 +51,13 @@
     </mx:VDividedBox>
 
    <!-- The right-hand part of the panel has the atoms collision area and various controls, within a Canvas. -->
-   <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" autoLayout="false" >
+   <mx:Canvas width="70%" height="100%" id="collisionsPanel" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
 
     <!-- (Several components overlap - their order here determines their view depth, from bottom to top.) -->
 
     <OB:CollisionsArea backgroundColor="0xFFFFFF" borderStyle="solid" id="collisionsArea" 
 	horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true" mouseChildren="true" 
-	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." includeInLayout="false" autoLayout="false" />
+	backgroundAlpha="0.1" toolTip="The current experiment, with its atoms. Drag to move around." />
 
     <mx:Label id="itCountLabel" text="-" right="10" top="10" width="50" toolTip="The number of timesteps that have elapsed" />
 

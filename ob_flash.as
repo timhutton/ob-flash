@@ -15,7 +15,9 @@ public function appInit():void
 {
 	// retrieve query string var "experiment" from URL, load XML experiment file, initialise (TODO)
 	if(Application.application.parameters.hasOwnProperty("experiment") && Application.application.parameters.experiment.length>0)
-		Alert.show("Experiment URL received: " + Application.application.parameters.experiment); 
+	{
+		RetrieveExperiment(Application.application.parameters.experiment);
+	}
 
 	// we start off with the atoms moving
 	addEventListener(Event.ENTER_FRAME, collisionsArea.Update);
@@ -25,6 +27,44 @@ public function appInit():void
 
 	// we allow the collisions area to be dragged
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
+}
+
+public function RetrieveExperiment(url:String):void
+{
+	var loader:URLLoader = new URLLoader();
+	loader.addEventListener(Event.COMPLETE, LoadExperiment);
+	loader.load(new URLRequest(url));
+}
+
+public function LoadExperiment(event:Event):void
+{
+	// We would like to be able to apply an XML schema (XSD) here to ensure that the XML matches
+	// our expectations. In the absence of this, we will have to manually check each item.
+	
+	var experiment:XML;
+	try
+	{
+		experiment = new XML(event.target.data)
+	}
+	catch(e:Error)
+	{
+		Alert.show("Error loading experiment: " + e.message);
+		return;
+	}
+	try
+	{
+		default xml namespace = "http://www.sq3.org.uk/Experiment";
+		if(experiment.hasOwnProperty("about") && experiment.about.hasOwnProperty("username") &&
+				 experiment.about.hasOwnProperty("summary"))
+			Alert.show("Experiment loaded.\n\nusername: "+experiment.about.username + "\n\nSummary: " + experiment.about.summary);
+		else
+			Alert.show("Experiment loaded. No description included.");
+	}
+	catch(e:Error)
+	{
+		Alert.show("Error parsing experiment: " + e.message);
+		return;
+	}
 }
 
 public function updateItCountLabel(event:ExperimentUpdateEvent):void
@@ -38,7 +78,7 @@ public function fitButtonClicked():void
 	collisionsArea.x=0;
 	collisionsArea.y=0;
 	collisionsArea.scaleX = collisionsArea.scaleY = Math.min(collisionsPanel.width/collisionsArea.areaX,
-		collisionsPanel.height/collisionsArea.areaY);
+			collisionsPanel.height/collisionsArea.areaY);
 }
 
 public function startDragging(event:MouseEvent):void 

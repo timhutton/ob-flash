@@ -127,7 +127,7 @@ public class CircularAtomsExperiment extends Experiment
 	protected function bounceTwoAtomsOffEachOthersBonds(a:CircularAtom,b:CircularAtom):void
 	{
 		// we simply pretend that b is on the other side of a
-		const bond_d:Number = CircularAtom.R*3;
+		const bond_d:Number = CircularAtom.R*3; // how long are bonds allowed to be?
 		const ghost_d:Number = bond_d + CircularAtom.R*2;
 		var pre_dist:Number = Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
 		var b2x:Number = b.x + (a.x-b.x)*ghost_d/pre_dist;
