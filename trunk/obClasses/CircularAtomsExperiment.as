@@ -36,6 +36,26 @@ public class CircularAtomsExperiment extends Experiment
 	}
 
 	/** @inheritDoc */
+	override public function redraw():void
+	{
+		super.redraw();
+
+		// redraw chemical bonds
+		graphics.clear();
+		graphics.lineStyle(10, 0x000000, 0.2); // thickness,colour,opacity
+		var i:int;
+		var a:CircularAtom;
+		var b:CircularAtom;
+		for(i = 0;i<bond_pairs.length;i+=2)
+		{
+			a = bond_pairs[i];
+			b = bond_pairs[i+1];
+			graphics.moveTo(a.x+CircularAtom.R,a.y+CircularAtom.R);
+			graphics.lineTo(b.x+CircularAtom.R,b.y+CircularAtom.R);
+		}	
+	}
+
+	/** @inheritDoc */
 	override public function timeStep():void
 	{
 		super.timeStep();

@@ -31,40 +31,46 @@ public function appInit():void
 
 public function RetrieveExperiment(url:String):void
 {
-	var loader:URLLoader = new URLLoader();
-	loader.addEventListener(Event.COMPLETE, LoadExperiment);
-	loader.load(new URLRequest(url));
+	try 
+	{
+		var loader:URLLoader = new URLLoader();
+		loader.addEventListener(Event.COMPLETE, ExperimentRetrievedFromURL);
+		loader.load(new URLRequest(url));
+	} 
+	catch(e:Error)
+	{
+		// (may be badly formed URL or attempt to access out-of-domain resources)
+		Alert.show("Error loading experiment: "+e.message);
+	}
 }
 
-public function LoadExperiment(event:Event):void
-{
-	// We would like to be able to apply an XML schema (XSD) here to ensure that the XML matches
-	// our expectations. In the absence of this, we will have to manually check each item.
-	
-	var experiment:XML;
+public function ExperimentRetrievedFromURL(event:Event):void
+{	
 	try
 	{
-		experiment = new XML(event.target.data)
-	}
+		LoadExperiment(event.target.data);
+	} 
 	catch(e:Error)
 	{
 		Alert.show("Error loading experiment: " + e.message);
 		return;
 	}
-	try
-	{
-		default xml namespace = "http://www.sq3.org.uk/Experiment";
-		if(experiment.hasOwnProperty("about") && experiment.about.hasOwnProperty("username") &&
-				 experiment.about.hasOwnProperty("summary"))
-			Alert.show("Experiment loaded.\n\nusername: "+experiment.about.username + "\n\nSummary: " + experiment.about.summary);
-		else
-			Alert.show("Experiment loaded. No description included.");
-	}
-	catch(e:Error)
-	{
-		Alert.show("Error parsing experiment: " + e.message);
-		return;
-	}
+}
+
+public function LoadExperiment(contents:String):void
+{
+	// We would like to be able to apply an XML schema (XSD) here to ensure that the XML matches
+	// our expectations. In the absence of this, we will have to manually check each item, and keep this code
+	// synchronized with changes to the schema.
+	
+	var experiment:XML = new XML(contents)
+
+	default xml namespace = "http://www.sq3.org.uk/Experiment";
+	if(experiment.hasOwnProperty("about") && experiment.about.hasOwnProperty("username") &&
+			experiment.about.hasOwnProperty("summary"))
+		Alert.show("Experiment loaded.\n\nusername: "+experiment.about.username + "\n\nSummary: " + experiment.about.summary);
+	else
+		Alert.show("Experiment loaded. No description included.");
 }
 
 public function updateItCountLabel(event:ExperimentUpdateEvent):void
