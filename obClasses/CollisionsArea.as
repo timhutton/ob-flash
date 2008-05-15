@@ -52,6 +52,9 @@ public class CollisionsArea extends Canvas
 		for(i=0;i<timesteps_per_frame;i++)
 			currentExperiment.timeStep();
 
+		// ask the experiment to redraw
+		currentExperiment.redraw();
+
 		// announce the update
 		dispatchEvent(new ExperimentUpdateEvent(currentExperiment.iterations,ExperimentUpdateEvent.UPDATE));
 	}

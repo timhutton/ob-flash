@@ -19,6 +19,9 @@ public class Experiment extends Canvas
 	/** The number of timesteps (iterations) elapsed since the start of the experiment. */
 	public function get iterations():uint { return _iterations; }
 
+	/** Redraw the experiment after changes. */
+	public function redraw():void {}
+
 	// protected things
 
 	protected var atoms:Array = new Array();

@@ -6,14 +6,14 @@
 		paddingLeft="10" paddingRight="10" xmlns:OB="obClasses.*" creationComplete="appInit();"
 		backgroundGradientColors="[0xCCCCCC, 0x444449]" frameRate="50" >
 
+ <!-- Most of the code is contained in .as files, this .mxml just contains the visual layout. -->
+ <mx:Script source="ob_flash.as" />
+
  <!-- The text on the controls is localized throughout, so we need to load the locale. -->
  <mx:Metadata>
    [ResourceBundle("interface")]
    [ResourceBundle("levels")]
  </mx:Metadata>
-
- <!-- Most of the code is contained in .as files, this .mxml just contains the visual layout. -->
- <mx:Script source="ob_flash.as" />
 
  <mx:Canvas width="100%" height="100%">
 
@@ -63,8 +63,8 @@
 
     <mx:VBox left="10" top="10">
      <mx:Button icon="@Embed(source='assets/viewmag+.png')" disabledIcon="@Embed(source='assets/viewmag+_grey.png')" id="zoomInButton" mouseDown="startZoom(1.1);" mouseUp="endZoom();" width="40" height="40" toolTip="Hold down to zoom in" />
-     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" width="40" height="40" toolTip="Hold down to zoom out" />
      <mx:Button label="fit" id="fitButton" click="fitButtonClicked();" width="40" height="40" toolTip="Size the atoms area to fit the screen" />
+     <mx:Button icon="@Embed(source='assets/viewmag-.png')" disabledIcon="@Embed(source='assets/viewmag-_grey.png')" id="zoomOutButton" mouseDown="startZoom(1.0/1.1);" mouseUp="endZoom();" width="40" height="40" toolTip="Hold down to zoom out" />
     </mx:VBox>
 
     <mx:ControlBar bottom="0" left="0" right="10">
