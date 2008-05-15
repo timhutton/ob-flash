@@ -22,7 +22,7 @@ First sight:
 - passing challenges leads to more complex ones, or you can explore the settings and do anything.
 
 Worklist:
-- implement physics types: circles-continuous, square-lattice (different nhood bond lengths)
+- implement physics types: circles-continuous, square-lattice (different nhood bond lengths), molecule-lattice
 - implement reaction types: simple two-way, three-way, catalysed, copies catalyst? special: fixes/unfixes atoms?
 - implement monitors: configurable from experiment spec., use event listeners to get data from collisions
 - implement graphs: updating from monitors, user can choose which to view, auto-scaling, etc.

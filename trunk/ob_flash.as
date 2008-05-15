@@ -63,7 +63,7 @@ public function LoadExperiment(contents:String):void
 	// our expectations. In the absence of this, we will have to manually check each item, and keep this code
 	// synchronized with changes to the schema.
 	
-	var experiment:XML = new XML(contents)
+	var experiment:XML = new XML(contents); // (may throw if not well-formed xml)
 
 	default xml namespace = "http://www.sq3.org.uk/Experiment";
 	if(experiment.hasOwnProperty("about") && experiment.about.hasOwnProperty("username") &&
@@ -85,6 +85,7 @@ public function fitButtonClicked():void
 	collisionsArea.y=0;
 	collisionsArea.scaleX = collisionsArea.scaleY = Math.min(collisionsPanel.width/collisionsArea.areaX,
 			collisionsPanel.height/collisionsArea.areaY);
+	zoomInButton.enabled = zoomOutButton.enabled = true;
 }
 
 public function startDragging(event:MouseEvent):void 
