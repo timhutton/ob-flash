@@ -17,6 +17,7 @@ public class CircularAtomsExperiment extends Experiment
 		super();
 		this._sizeX=600;
 		this._sizeY=500;
+		this.global_reactions.push(new Reaction(0,0,false,0,0,1,true,2));
 	}
 
 	/** @inheritDoc */
@@ -65,6 +66,23 @@ public class CircularAtomsExperiment extends Experiment
 		bounceAtomsOffEachOther();
 		for(var i:uint=0;i<bond_pairs.length;i+=2)
 			bounceTwoAtomsOffEachOthersBonds(bond_pairs[i+0],bond_pairs[i+1]);
+	}
+
+	/** Does any reaction apply to these atoms, since they've collided? */
+	protected function Collision(a:CircularAtom,b:CircularAtom):void
+	{
+		for each(var r:Reaction in global_reactions)
+		{
+			// TODO: check pre_bond, set post_bond
+			if(r.a_type == a.type && r.a_pre_state == a.state &&
+				r.b_type == b.type && r.b_pre_state == b.state)
+			{
+				a.state = r.a_post_state;				
+				b.state = r.b_post_state;				
+				bond_pairs.push(a);
+				bond_pairs.push(b);
+			}
+		}
 	}
 
 	protected function bounceAtomsOffWalls():void
@@ -136,12 +154,7 @@ public class CircularAtomsExperiment extends Experiment
 		b.velocity.x += delta_vx;
 		b.velocity.y += delta_vy;
 
-		// DEBUG: also bond these two together, if one/both currently unbonded 
-		if(bond_pairs.indexOf(a)==-1 || bond_pairs.indexOf(b)==-1)
-		{
-			bond_pairs.push(a);
-			bond_pairs.push(b);
-		}
+		Collision(a,b);
 	}
 
 	protected function bounceTwoAtomsOffEachOthersBonds(a:CircularAtom,b:CircularAtom):void

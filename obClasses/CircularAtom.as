@@ -18,6 +18,8 @@ public class CircularAtom extends Atom
 
 	public static const INITIAL_SPEED:Number = 5;
 
+	protected var visual_label:Label = new Label();
+
 	protected var _velocity:Point = new Point(Math.random()*INITIAL_SPEED*2-INITIAL_SPEED,Math.random()*INITIAL_SPEED*2-INITIAL_SPEED);
 
 	// member functions
@@ -54,18 +56,24 @@ public class CircularAtom extends Atom
 		this.graphics.endFill();
 
 		// and a text label to show the atom's type and state
-		var label:Label = new Label();
-		label.text = TYPES[this.type] + String(this.state);
-		label.setStyle("fontWeight","bold");
-		//label.setStyle("textAlign","center"); // (doesn't work?)
-		label.setStyle("color","0xCCCCCC");
-		label.setStyle("fontSize",String(R-6));
-		//label.alpha = 0.2; // (doesn't work?)
-		label.x = 3;
-		label.y = 7;
-		label.includeInLayout = false;
-		this.addChild(label);
+		visual_label.text = TYPES[this.type] + String(this.state);
+		visual_label.setStyle("fontWeight","bold");
+		//visual_label.setStyle("textAlign","center"); // (doesn't work?)
+		visual_label.setStyle("color","0xCCCCCC");
+		visual_label.setStyle("fontSize",String(R-6));
+		//visual_label.alpha = 0.2; // (doesn't work?)
+		visual_label.x = 3;
+		visual_label.y = 7;
+		visual_label.includeInLayout = false;
+		this.addChild(visual_label);
 	}		
+
+	override public function set state(s:int):void 
+	{ 
+		super.state = s;
+		visual_label.text = TYPES[this.type] + String(this.state);
+	}
+
 }
 
 }

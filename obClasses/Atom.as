@@ -11,7 +11,7 @@ public class Atom extends Canvas
 	/** atoms have fixed type a-f, represented as 0-5 */
 	public function get type():int { return this._type; }
 
-	protected var _state:int = int(Math.random()*1000) % 150;
+	protected var _state:int = 0;
 	/** atoms have a variable state */
 	public function get state():int { return this._state; }
 	public function set state(s:int):void 

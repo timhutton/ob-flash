@@ -35,3 +35,13 @@ http://www.storage.org/stuff/ob_flash.swf?experiment=http://www.funzone.com/jumb
 - implement standalone C++ version.
 - implement catalysts, floods, mutations, as needed for evolution.
 - recreate all published experiments as xml experiment files, partly as a test of coverage.
+Issues:
+- want to set challenges as partially-fixed experiments (e.g. user can
+change reactions but not initial state or success monitor) but want to
+allow users to make new experiments/challenges based on them,
+with/without the locks in place. Want a report board where users can
+see how many people have solved their challenge. In fact, want to copy
+kwon-tom loop in many ways - user management, solution 'submit', user
+puzzles, '# puzzles solved today', forums. (sourceforge can use php (unlike sq3 and googlecode)) One thing - swf will get cached, so each web page can
+contain it's own 'challenge' (swf gets passed a new experiment url)
+and it won't have to reload each time.
