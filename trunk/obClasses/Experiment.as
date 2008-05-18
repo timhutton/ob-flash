@@ -3,6 +3,7 @@ package obClasses
 
 import mx.containers.Canvas;
 import flash.geom.Point;
+//import obClasses.Reaction;
 
 /** Base class for different experiment types. */
 public class Experiment extends Canvas
@@ -26,6 +27,8 @@ public class Experiment extends Canvas
 
 	protected var atoms:Array = new Array();
 	protected var bond_pairs:Array = new Array();
+	protected var global_reactions:Array = new Array();
+
 	protected var _sizeX:uint;
 	protected var _sizeY:uint;
 	protected var _iterations:uint = 0;
