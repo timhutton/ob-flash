@@ -87,7 +87,8 @@
  </mx:VBox>
  <mx:VBox label="Settings" toolTip="Change the properties of the experiment" >
    <mx:Button label="switch to lattice" click="switchExperimentType();" />
-   <mx:Button label="test cgi" click="testCGI();" />
+   <mx:Button label="get experiments" click="getExperimentsList();" />
+   <mx:Button label="upload experiment" click="uploadExperiment();" />
  </mx:VBox>
  <mx:VBox label="Help" toolTip="Explains what this is all about and what you can do with it" />
  <mx:VBox label="About" toolTip="Links to the source code and the software license" >

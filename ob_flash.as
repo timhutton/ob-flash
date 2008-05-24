@@ -29,12 +29,12 @@ public function appInit():void
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
 }
 
-public function testCGI():void
+public function getExperimentsList():void
 {
 	try 
 	{
 		var loader:URLLoader = new URLLoader();
-		loader.addEventListener(Event.COMPLETE, CGI_return);
+		loader.addEventListener(Event.COMPLETE, gotExperimentsList);
 		loader.load(new URLRequest("http://www.sq3.org.uk/test/experiments/get_experiments_list.cgi"));
 	} 
 	catch(e:Error)
@@ -44,9 +44,34 @@ public function testCGI():void
 	}
 }
 
-public function CGI_return(event:Event):void
+public function gotExperimentsList(event:Event):void
 {
 	Alert.show(event.target.data);
+}
+
+public function uploadExperiment():void
+{
+	try 
+	{
+		var loader:URLLoader = new URLLoader();
+		loader.addEventListener(Event.COMPLETE, uploadedExperiment);
+
+		// DEBUG: would normally request the current experiment's XML
+		loader.load(new URLRequest("http://www.sq3.org.uk/test/upload.cgi?filename=from_flash.xml&experiment=<experiment><about><username>flash author</username><summary>easy</summary></about></experiment>"));
+	} 
+	catch(e:Error)
+	{
+		// (may be badly formed URL or attempt to access out-of-domain resources)
+		Alert.show("Error calling CGI: "+e.message);
+	}
+}
+
+public function uploadedExperiment(event:Event):void
+{
+	if(event.target.data=="success")
+		Alert.show("Experiment uploaded.");
+	else
+		Alert.show("Error uploading experiment: "+event.target.data);
 }
 
 public function RetrieveExperiment(url:String):void
