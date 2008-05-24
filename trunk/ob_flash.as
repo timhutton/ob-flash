@@ -29,6 +29,26 @@ public function appInit():void
 	collisionsArea.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
 }
 
+public function testCGI():void
+{
+	try 
+	{
+		var loader:URLLoader = new URLLoader();
+		loader.addEventListener(Event.COMPLETE, CGI_return);
+		loader.load(new URLRequest("http://www.sq3.org.uk/test/experiments/get_experiments_list.cgi"));
+	} 
+	catch(e:Error)
+	{
+		// (may be badly formed URL or attempt to access out-of-domain resources)
+		Alert.show("Error calling CGI: "+e.message);
+	}
+}
+
+public function CGI_return(event:Event):void
+{
+	Alert.show(event.target.data);
+}
+
 public function RetrieveExperiment(url:String):void
 {
 	try 
