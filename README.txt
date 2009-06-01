@@ -1,16 +1,18 @@
 Build Instructions:
 ===================
 
-1) Download and install the "open source flex 3 SDK" from here:
+1) Download and install the "open source flex SDK" from here:
 
 http://opensource.adobe.com/wiki/display/flexsdk/Downloads
+
+Versions 3 and 4 seem to both work fine.
 
 Just unzip it into (e.g.) ~/flex
 
 1b) (On linux) You may need to run dos2unix on the shell scripts in ~/flex/bin, else
 you will get messages about /bin/sh bad filename
 
-1b) Prepare the SDK for localization: 
+1c) Prepare the SDK for localization: 
 cd ~/flex/bin
 copylocale en_US fr_FR
 
